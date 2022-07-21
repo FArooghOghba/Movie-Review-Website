@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="zxx">
+<!--[endif]-->
+
+<head>
+	<title>{% block title %}{% endblock %}</title>
+	{% include 'head.html' %}
+</head>
+
+<body>
+
+	{% include 'header.html' %}
+
+	{% block content %}
+    {% endblock content%}
+
+	{% include 'footer.html' %}
+	{% include 'scripts.html' %}
+</body>
+
+</html>
