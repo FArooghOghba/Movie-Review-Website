@@ -7,10 +7,6 @@ def index_view(request):
     return render(request, template_name='website/index.html')
 
 
-def movie_list_view(request):
-    return render(request, template_name='website/movie_list.html')
-
-
 def blog_list_view(request):
     return render(request, template_name='website/blog_list.html')
 
