@@ -624,7 +624,7 @@
 }
 @media (max-width: 1540px){
 	.product-heading .con input{
-		width:calc(170px - 50px);
+		width:calc(190px - 50px);
 	}
 	.prs_animate_btn1 .button--tamaya{
 		min-width:120px;

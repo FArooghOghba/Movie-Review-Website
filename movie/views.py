@@ -20,3 +20,10 @@ def movie_list_view(request):
 
     context = {'all_movie_pages': all_movie_pages}
     return render(request, template_name='movie/movie_list.html', context=context)
+
+
+def movie_single_view(request, movie_id):
+    movie = Movie.objects.get(pk=movie_id)
+
+    context = {'movie': movie}
+    return render(request, template_name='movie/movie_single.html', context=context)
