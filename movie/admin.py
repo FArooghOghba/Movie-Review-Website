@@ -7,6 +7,7 @@ from . import models
 @admin.register(models.Movie)
 class MovieAdmin(admin.ModelAdmin):
     list_display = [
+        'id',
         'title',
         'rating',
         'release_date',

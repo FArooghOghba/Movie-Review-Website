@@ -1807,6 +1807,7 @@ body.active #mobile-nav {
 .prs_upcom_movie_img_box{
 	float:left;
 	width:100%;
+	height:380px;
 	position:relative;
 	overflow:hidden;
 }
@@ -4330,6 +4331,7 @@ body.active #mobile-nav {
 }
 .prs_mcc_list_movie_img_wrapper img{
 	width:100%;
+	height:360px;
 	-webkit-border-top-left-radius: 10px;
     -moz-border-top-left-radius: 10px;
     border-top-left-radius: 10px;
