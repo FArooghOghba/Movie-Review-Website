@@ -42,11 +42,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'debug_toolbar',
+
     'website.apps.WebsiteConfig',
     'movie.apps.MovieConfig'
 ]
 
 MIDDLEWARE = [
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
+
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -137,3 +141,11 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = '/media/'  # MEDIA_URL is the URL that will serve the media files.
 MEDIA_ROOT = BASE_DIR / 'media'  # MEDIA_ROOT is the path to the root directory where the files are getting stored.
+
+# Django Debug Toolbar Configuration
+
+INTERNAL_IPS = [
+    # ...
+    "127.0.0.1",
+    # ...
+]

@@ -1,5 +1,6 @@
 asgiref==3.5.2
 Django==3.2.14
+django-debug-toolbar==3.5.0
 mysqlclient==2.1.1
 Pillow==9.2.0
 python-dotenv==0.20.0

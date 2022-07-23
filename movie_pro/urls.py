@@ -23,6 +23,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('website.urls')),
     path('movie/', include('movie.urls')),
+
+    path('__debug__/', include('debug_toolbar.urls')),
 ]
 
 # With this urlpatterns, Django's development server is capable of serving media files.
