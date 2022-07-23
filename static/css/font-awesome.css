@@ -199,6 +199,7 @@
   content: "\f005";
 }
 .fa-star-o:before {
+  font-size: x-large;
   content: "\f006";
 }
 .fa-user:before {
