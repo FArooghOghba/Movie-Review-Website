@@ -12,7 +12,7 @@ class Movie(models.Model):
     poster = models.ImageField(upload_to='movie_poster/')
     trailer = models.URLField()
     # cast_crew
-    rating = models.IntegerField(default=0)
+    rating = models.DecimalField(max_digits=2, decimal_places=1, default=0)
     runtime = models.DurationField()
     votes = models.IntegerField(default=0)
     release_date = models.DateField()
