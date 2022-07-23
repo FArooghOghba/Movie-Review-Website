@@ -1,10 +1,16 @@
 from django.shortcuts import render
+from django.utils import timezone
+
+from movie.models import Movie
 
 
 # Create your views here.
 
 def index_view(request):
-    return render(request, template_name='website/index.html')
+    movies = Movie.objects.filter(release_date__gt=timezone.now())
+
+    context = {'movies': movies}
+    return render(request, template_name='website/index.html', context=context)
 
 
 def blog_list_view(request):
