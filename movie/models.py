@@ -5,6 +5,7 @@ from django.db import models
 
 class Movie(models.Model):
     title = models.CharField(max_length=255, unique=True)
+    slug = models.SlugField(null=False, unique=True)
     # category
     # tag
     synopsis = models.TextField()

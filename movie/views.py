@@ -22,8 +22,8 @@ def movie_list_view(request):
     return render(request, template_name='movie/movie_list.html', context=context)
 
 
-def movie_single_view(request, movie_id):
-    movie = Movie.objects.get(pk=movie_id)
+def movie_single_view(request, movie_slug):
+    movie = Movie.objects.get(slug=movie_slug)
 
     context = {'movie': movie}
     return render(request, template_name='movie/movie_single.html', context=context)

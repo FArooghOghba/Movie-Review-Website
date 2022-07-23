@@ -123,14 +123,14 @@
 															<ul>
 																<li><a class="test-popup-link button" href="{{ movie.trailer }}">View Trailer</a>
 																</li>
-																<li><a href="{% url 'movie:single' movie_id=movie.id %}">View Details</a>
+																<li><a href="{% url 'movie:single' movie_slug=movie.slug %}">View Details</a>
 																</li>
 															</ul>
 														</div>
 													</div>
 													<div class="prs_upcom_movie_content_box">
 														<div class="prs_upcom_movie_content_box_inner">
-															<h2><a href="{% url 'movie:single' movie_id=movie.id %}">{{ movie.title }}</a></h2>
+															<h2><a href="{% url 'movie:single' movie_slug=movie.slug %}">{{ movie.title }}</a></h2>
 															<p>Drama , Acaation</p>	<i class="fa fa-star"></i>
 															<i class="fa fa-star"></i>
 															<i class="fa fa-star"></i>

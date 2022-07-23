@@ -13,3 +13,7 @@ class MovieAdmin(admin.ModelAdmin):
         'release_date',
         'runtime'
     ]
+
+    prepopulated_fields = {
+        'slug': ['title']
+    }
