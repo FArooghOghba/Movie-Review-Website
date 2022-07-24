@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'debug_toolbar',
+    'star_ratings',
 
     'website.apps.WebsiteConfig',
     'movie.apps.MovieConfig'
@@ -142,6 +143,11 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'  # MEDIA_URL is the URL that will serve the media files.
 MEDIA_ROOT = BASE_DIR / 'media'  # MEDIA_ROOT is the path to the root directory where the files are getting stored.
 
+# Default primary key field type
+# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 # Django Debug Toolbar Configuration
 
 INTERNAL_IPS = [
@@ -149,3 +155,9 @@ INTERNAL_IPS = [
     "127.0.0.1",
     # ...
 ]
+
+# Django Rating Star
+
+STAR_RATINGS_RERATE_SAME_DELETE = True
+STAR_RATINGS_RANGE = 10
+STAR_RATINGS_STAR_HEIGHT = 20

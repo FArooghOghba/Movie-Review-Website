@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block title %}Movie{% endblock %}
 {% load static %}
+{% load ratings %}
 
 {% block content %}
 
@@ -52,102 +53,7 @@
 	<!-- prs video top End -->
 
 	<!-- st slider rating wrapper Start -->
-	<div class="st_slider_rating_main_wrapper float_left">
-		<div class="container">
-			<div class="st_slider_rating_left">
-				<div class="st_rating_box">
-					<fieldset class="rating">
-					<h3>3</h3>
-						<input type="radio" name="rating" value="5" />
-						<label class="full" title="5 stars"></label>
-						<input type="radio" name="rating" value="4 and a half" />
-						<label class="half" title="4.5 stars"></label>
-						<input type="radio" name="rating" value="4" />
-						<label class="full" title="4 stars"></label>
-						<input type="radio" name="rating" value="3 and a half" />
-						<label class="half" title="3.5 stars"></label>
-						<input type="radio" name="rating" value="3" />
-						<label class="full" title="3 stars"></label>
-						<input type="radio" name="rating" value="2 and a half" />
-						<label class="half" title="2.5 stars"></label>
-						<input type="radio" name="rating" value="2" />
-						<label class="full" title="2 stars"></label>
-						<input type="radio" name="rating" value="1 and a half" />
-						<label class="half" title="1.5 stars"></label>
-						<input type="radio" name="rating" value="1" />
-						<label class="full" title="1 star"></label>
-						<input type="radio" name="rating" value="half" />
-						<label class="half" title="0.5 stars"></label>
-					</fieldset>
-					<h4>CRITICS RATING</h4>
-				</div>
-				<div class="st_rating_box st_rating_box2">
-					<fieldset class="rating">
-					<h3>4.5&nbsp;&nbsp;</h3>
-						<input type="radio" name="rating" value="5" />
-						<label class="full" title="5 stars"></label>
-						<input type="radio" name="rating" value="4 and a half" />
-						<label class="half" title="4.5 stars"></label>
-						<input type="radio" name="rating" value="4" />
-						<label class="full" title="4 stars"></label>
-						<input type="radio" name="rating" value="3 and a half" />
-						<label class="half" title="3.5 stars"></label>
-						<input type="radio" name="rating" value="3" />
-						<label class="full" title="3 stars"></label>
-						<input type="radio" name="rating" value="2 and a half" />
-						<label class="half" title="2.5 stars"></label>
-						<input type="radio" name="rating" value="2" />
-						<label class="full" title="2 stars"></label>
-						<input type="radio" name="rating" value="1 and a half" />
-						<label class="half" title="1.5 stars"></label>
-						<input type="radio" name="rating" value="1" />
-						<label class="full" title="1 star"></label>
-						<input type="radio" name="rating" value="half" />
-						<label class="half" title="0.5 stars"></label>
-												</fieldset>
-					<h4>USERS RATING</h4>
-				</div>
-				<div class="st_rating_box st_rating_box2">
-					<fieldset class="rating">
-					<h3>0&nbsp;&nbsp;</h3>
-						<input type="radio" name="rating" value="5" />
-						<label class="full" title="5 stars"></label>
-						<input type="radio" name="rating" value="4 and a half" />
-						<label class="half" title="4.5 stars"></label>
-						<input type="radio" name="rating" value="4" />
-						<label class="full" title="4 stars"></label>
-						<input type="radio" name="rating" value="3 and a half" />
-						<label class="half" title="3.5 stars"></label>
-						<input type="radio" name="rating" value="3" />
-						<label class="full" title="3 stars"></label>
-						<input type="radio" name="rating" value="2 and a half" />
-						<label class="half" title="2.5 stars"></label>
-						<input type="radio" name="rating" value="2" />
-						<label class="full" title="2 stars"></label>
-						<input type="radio" name="rating" value="1 and a half" />
-						<label class="half" title="1.5 stars"></label>
-						<input type="radio" name="rating" value="1" />
-						<label class="full" title="1 star"></label>
-						<input type="radio" name="rating" value="half" />
-						<label class="half" title="0.5 stars"></label>
-												</fieldset>
-					<h4>RATE IT</h4>
-				</div>
-			</div>
-			<div class="st_slider_rating_right">
-				<div class="st_slider_rating_btn prs_animate_btn1">
-					<ul>
-						<li data-animation="animated fadeInUp"><a href="#" class="button button--tamaya prs_upcom_main_btn" data-text="book now"><span>book now</span></a>
-										</li>
-					</ul>
-				</div>
-				<div class="st_slider_rating_btn_heart">
-					<h5><i class="fa fa-heart"></i> 85%</h5>
-					<h4>52,291 votes</h4>
-				</div>
-			</div>
-		</div>
-	</div>
+	{% ratings movie template_name='movie/rating.html' %}
 	<!-- st slider rating wrapper End -->
 
 	<!-- st slider sidebar wrapper Start -->
