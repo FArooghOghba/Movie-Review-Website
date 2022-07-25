@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block title %}Movie Pro{% endblock %}
 {% load static %}
+{% load ratings %}
 
 {% block content %}
 
@@ -117,7 +118,7 @@
 													<div class="prs_upcom_movie_img_overlay"></div>
 													<div class="prs_upcom_movie_img_btn_wrapper">
 														<ul>
-															<li><a href="{{ movie.trailer }}">View Trailer</a>
+															<li><a class="test-popup-link button" href="{{ movie.trailer }}">View Trailer</a>
 															</li>
 															<li><a href="{% url 'movie:single' movie_slug=movie.slug %}">View Details</a>
 															</li>
@@ -128,7 +129,7 @@
 													<div class="prs_upcom_movie_content_box_inner">
 														<h2><a href="{% url 'movie:single' movie_slug=movie.slug %}">{{ movie.title }}</a></h2>
 														<p>Drama , Action</p>
-														<h4>4.5 <i class="fa fa-star"></i></h4>
+														<h4>{% ratings movie template_name='movie/rating_list_page.html' %} <i class="fa fa-star"></i></h4>
 													</div>
 													<div class="prs_upcom_movie_content_box_inner_icon">
 														<ul>
@@ -153,7 +154,7 @@
 													<div class="prs_upcom_movie_img_overlay"></div>
 													<div class="prs_upcom_movie_img_btn_wrapper">
 														<ul>
-															<li><a href="{{ movie.trailer }}">View Trailer</a>
+															<li><a class="test-popup-link button" href="{{ movie.trailer }}">View Trailer</a>
 															</li>
 															<li><a href="{% url 'movie:single' movie_slug=movie.slug %}">View Details</a>
 															</li>
@@ -164,7 +165,7 @@
 													<div class="prs_upcom_movie_content_box_inner">
 														<h2><a href="{% url 'movie:single' movie_slug=movie.slug %}">{{ movie.title }}</a></h2>
 														<p>Drama , Acation</p>
-														<h4>4.5 <i class="fa fa-star"></i></h4>
+														<h4>{% ratings movie template_name='movie/rating_list_page.html' %} <i class="fa fa-star"></i></h4>
 													</div>
 													<div class="prs_upcom_movie_content_box_inner_icon">
 														<ul>
@@ -205,7 +206,7 @@
 													<div class="prs_upcom_movie_img_overlay"></div>
 													<div class="prs_upcom_movie_img_btn_wrapper">
 														<ul>
-															<li><a href="{{ movie.trailer }}">View Trailer</a>
+															<li><a class="test-popup-link button" href="{{ movie.trailer }}">View Trailer</a>
 															</li>
 															<li><a href="{% url 'movie:single' movie_slug=movie.slug %}">View Details</a>
 															</li>
@@ -216,7 +217,7 @@
 													<div class="prs_upcom_movie_content_box_inner">
 														<h2><a href="{% url 'movie:single' movie_slug=movie.slug %}">{{ movie.title }}</a></h2>
 														<p>Drama , Action</p>
-														<h4>4.5 <i class="fa fa-star"></i></h4>
+														<h4>{% ratings movie template_name='movie/rating_list_page.html' %} <i class="fa fa-star"></i></h4>
 													</div>
 													<div class="prs_upcom_movie_content_box_inner_icon">
 														<ul>
@@ -241,7 +242,7 @@
 													<div class="prs_upcom_movie_img_overlay"></div>
 													<div class="prs_upcom_movie_img_btn_wrapper">
 														<ul>
-															<li><a href="{{ movie.trailer }}">View Trailer</a>
+															<li><a class="test-popup-link button" href="{{ movie.trailer }}">View Trailer</a>
 															</li>
 															<li><a href="{% url 'movie:single' movie_slug=movie.slug %}">View Details</a>
 															</li>
@@ -252,7 +253,7 @@
 													<div class="prs_upcom_movie_content_box_inner">
 														<h2><a href="{% url 'movie:single' movie_slug=movie.slug %}">{{ movie.title }}</a></h2>
 														<p>Drama , Acation</p>
-														<h4>4.5 <i class="fa fa-star"></i></h4>
+														<h4>{% ratings movie template_name='movie/rating_list_page.html' %} <i class="fa fa-star"></i></h4>
 													</div>
 													<div class="prs_upcom_movie_content_box_inner_icon">
 														<ul>
@@ -293,7 +294,7 @@
 													<div class="prs_upcom_movie_img_overlay"></div>
 													<div class="prs_upcom_movie_img_btn_wrapper">
 														<ul>
-															<li><a href="{{ movie.trailer }}">View Trailer</a>
+															<li><a class="test-popup-link button" href="{{ movie.trailer }}">View Trailer</a>
 															</li>
 															<li><a href="{% url 'movie:single' movie_slug=movie.slug %}">View Details</a>
 															</li>
@@ -304,7 +305,7 @@
 													<div class="prs_upcom_movie_content_box_inner">
 														<h2><a href="{% url 'movie:single' movie_slug=movie.slug %}">{{ movie.title }}</a></h2>
 														<p>Drama , Acation</p>
-														<h4>4.5 <i class="fa fa-star"></i></h4>
+														<h4>{% ratings movie template_name='movie/rating_list_page.html' %} <i class="fa fa-star"></i></h4>
 													</div>
 													<div class="prs_upcom_movie_content_box_inner_icon">
 														<ul>
@@ -329,7 +330,7 @@
 													<div class="prs_upcom_movie_img_overlay"></div>
 													<div class="prs_upcom_movie_img_btn_wrapper">
 														<ul>
-															<li><a href="{{ movie.trailer }}">View Trailer</a>
+															<li><a class="test-popup-link button" href="{{ movie.trailer }}">View Trailer</a>
 															</li>
 															<li><a href="{% url 'movie:single' movie_slug=movie.slug %}">View Details</a>
 															</li>
@@ -340,7 +341,7 @@
 													<div class="prs_upcom_movie_content_box_inner">
 														<h2><a href="{% url 'movie:single' movie_slug=movie.slug %}">{{ movie.title }}</a></h2>
 														<p>Drama , Acation</p>
-														<h4>4.5 <i class="fa fa-star"></i></h4>
+														<h4>{% ratings movie template_name='movie/rating_list_page.html' %} <i class="fa fa-star"></i></h4>
 													</div>
 													<div class="prs_upcom_movie_content_box_inner_icon">
 														<ul>
