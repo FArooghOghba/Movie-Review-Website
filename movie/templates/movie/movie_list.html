@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block title %}Movies{% endblock %}
 {% load static %}
+{% load ratings %}
 
 {% block content %}
 
@@ -132,7 +133,7 @@
 														<div class="prs_upcom_movie_content_box_inner">
 															<h2><a href="{% url 'movie:single' movie_slug=movie.slug %}">{{ movie.title }}</a></h2>
 															<p>Drama , Acaation</p>
-															<h4>4.5 <i class="fa fa-star"></i></h4>
+															<h4>{% ratings movie template_name='movie/rating_list_page.html' %} <i class="fa fa-star"></i></h4>
 														</div>
 														<div class="prs_upcom_movie_content_box_inner_icon">
 															<ul>
@@ -185,14 +186,19 @@
 														<img src="{{ movie.poster.url }}" alt="categoty_img">
 													</div>
 													<div class="prs_mcc_list_movie_img_cont_wrapper">
+
 														<div class="prs_mcc_list_left_cont_wrapper">
 															<h2>{{ movie.title }}</h2>
-															<p>Drama , Acation &nbsp;&nbsp;&nbsp;4.5 <i class="fa fa-star"></i>
-															</p>
+
+															<p>Drama , Acation  &nbsp;&nbsp;{% ratings movie template_name='movie/rating_list_page.html' %}  <i class="fa fa-star"></i></p>
+
 															<h4>Movie Director - Jhon Doe</h4>
 														</div>
-														<div class="prs_mcc_list_right_cont_wrapper">	<a href="#"><i class="fa fa-star-o"></i></a>
+
+														<div class="prs_mcc_list_right_cont_wrapper">
+															<a href="#"><i class="fa fa-star-o"></i></a>
 														</div>
+
 														<div class="prs_mcc_list_bottom_cont_wrapper">
 															<p>{{ movie.synopsis|truncatewords:25 }}</p>
 															<ul>
