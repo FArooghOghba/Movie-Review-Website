@@ -96,14 +96,26 @@
 													<div class="prs_upcom_movie_content_box">
 														<div class="prs_upcom_movie_content_box_inner">
 															<h2><a href="{% url 'movie:single' movie_slug=movie.slug %}">{{ movie.title|truncatewords:2 }}</a></h2>
-															<p>Drama , Acaation</p>
+															<p>
+																{% for genre in movie.genre.all %}
+																	{% if forloop.counter == 3 %}
+																		{{ genre.title|truncatechars:4 }}
+																	{% elif not forloop.last %}
+																		{{ genre.title|title }},
+																	{% else %}
+																		{{ genre.title|title }}
+																	{% endif %}
+																{% endfor %}
+															</p>
 															<h4>{% ratings movie template_name='movie/rating_list_page.html' %} <i class="fa fa-star"></i></h4>
 														</div>
 														<div class="prs_upcom_movie_content_box_inner_icon">
 															<ul>
+
 																<li>
 																	<a href="movie_booking.html"><i class="fa fa-star-o"></i></a>
 																</li>
+
 															</ul>
 														</div>
 													</div>
@@ -154,7 +166,12 @@
 														<div class="prs_mcc_list_left_cont_wrapper">
 															<h2>{{ movie.title|truncatewords:5 }}</h2>
 
-															<p>Drama , Acation  &nbsp;&nbsp;{% ratings movie template_name='movie/rating_list_page.html' %}  <i class="fa fa-star"></i></p>
+															<p>
+																{% for genre in movie.genre.all %}
+																	{{ genre.title|title }} {% if not forloop.last %},{% endif %}
+																{% endfor %}
+																&nbsp;&nbsp;{% ratings movie template_name='movie/rating_list_page.html' %}  <i class="fa fa-star"></i>
+															</p>
 
 															<h4>Movie Director - Jhon Doe</h4>
 														</div>
