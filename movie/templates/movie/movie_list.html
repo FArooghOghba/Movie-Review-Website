@@ -2,6 +2,7 @@
 {% block title %}Movies{% endblock %}
 {% load static %}
 {% load ratings %}
+{% load movie_tags %}
 
 {% block content %}
 
@@ -58,44 +59,7 @@
 	<div class="prs_mc_category_sidebar_main_wrapper">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 hidden-sm hidden-xs">
-					<div class="prs_mcc_left_side_wrapper">
-						<div class="prs_mcc_left_searchbar_wrapper">
-							<input type="text" placeholder="Search Movie">
-							<button><i class="flaticon-tool"></i>
-							</button>
-						</div>
-						<div class="prs_mcc_bro_title_wrapper">
-							<h2>browse title</h2>
-							<ul>
-								<li><i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a href="#">All <span>23,124</span></a> 
-								</li>
-								<li><i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a href="#">Action <span>512</span></a> 
-								</li>
-								<li><i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a href="#">Romantic <span>548</span></a> 
-								</li>
-								<li><i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a href="#">Love <span>557</span></a> 
-								</li>
-								<li><i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a href="#">Musical <span>554</span></a> 
-								</li>
-								<li><i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a href="#">Drama <span>567</span></a> 
-								</li>
-								<li><i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a href="#">Thriller <span>689</span></a> 
-								</li>
-								<li><i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a href="#">Horror <span>478</span></a> 
-								</li>
-							</ul>
-						</div>
-						<div class="prs_mcc_event_title_wrapper">
-							<h2>Top Events</h2>
-							<img src="{% static 'images/content/movie_category/event_img.jpg' %}" alt="event_img">
-							<h3><a href="#">Music Event in india</a></h3>
-							<p>Pune <span><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i></span>
-							</p>
-							<h4>June 07 <span>08:00-12:00 pm</span></h4>
-						</div>
-					</div>
-				</div>
+				{% get_genres_count %}
 				<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
 					<div class="prs_mcc_right_side_wrapper">
 						<div class="row">
@@ -131,7 +95,7 @@
 													</div>
 													<div class="prs_upcom_movie_content_box">
 														<div class="prs_upcom_movie_content_box_inner">
-															<h2><a href="{% url 'movie:single' movie_slug=movie.slug %}">{{ movie.title }}</a></h2>
+															<h2><a href="{% url 'movie:single' movie_slug=movie.slug %}">{{ movie.title|truncatewords:2 }}</a></h2>
 															<p>Drama , Acaation</p>
 															<h4>{% ratings movie template_name='movie/rating_list_page.html' %} <i class="fa fa-star"></i></h4>
 														</div>
@@ -188,7 +152,7 @@
 													<div class="prs_mcc_list_movie_img_cont_wrapper">
 
 														<div class="prs_mcc_list_left_cont_wrapper">
-															<h2>{{ movie.title }}</h2>
+															<h2>{{ movie.title|truncatewords:5 }}</h2>
 
 															<p>Drama , Acation  &nbsp;&nbsp;{% ratings movie template_name='movie/rating_list_page.html' %}  <i class="fa fa-star"></i></p>
 
@@ -245,44 +209,6 @@
 									</div>
 								</div>
 							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 visible-sm visible-xs">
-					<div class="prs_mcc_left_side_wrapper">
-						<div class="prs_mcc_left_searchbar_wrapper">
-							<input type="text" placeholder="Search Movie">
-							<button><i class="flaticon-tool"></i>
-							</button>
-						</div>
-						<div class="prs_mcc_bro_title_wrapper">
-							<h2>browse title</h2>
-							<ul>
-								<li><i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a href="#">All <span>23,124</span></a> 
-								</li>
-								<li><i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a href="#">Action <span>512</span></a> 
-								</li>
-								<li><i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a href="#">Romantic <span>548</span></a> 
-								</li>
-								<li><i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a href="#">Love <span>557</span></a> 
-								</li>
-								<li><i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a href="#">Musical <span>554</span></a> 
-								</li>
-								<li><i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a href="#">Drama <span>567</span></a> 
-								</li>
-								<li><i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a href="#">Thriller <span>689</span></a> 
-								</li>
-								<li><i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a href="#">Horror <span>478</span></a> 
-								</li>
-							</ul>
-						</div>
-						<div class="prs_mcc_event_title_wrapper">
-							<h2>Top Events</h2>
-							<img src="{% static 'images/content/movie_category/event_img.jpg' %}" alt="event_img">
-							<h3><a href="#">Music Event in india</a></h3>
-							<p>Mumbai & Pune <span><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i></span>
-							</p>
-							<h4>June 07 <span>08:00-12:00 pm</span></h4>
 						</div>
 					</div>
 				</div>

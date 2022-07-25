@@ -17,3 +17,10 @@ class MovieAdmin(admin.ModelAdmin):
     prepopulated_fields = {
         'slug': ['title']
     }
+
+
+@admin.register(models.Genre)
+class GenreAdmin(admin.ModelAdmin):
+    prepopulated_fields = {
+        'slug': ['title']
+    }

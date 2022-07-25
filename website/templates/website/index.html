@@ -127,7 +127,7 @@
 												</div>
 												<div class="prs_upcom_movie_content_box">
 													<div class="prs_upcom_movie_content_box_inner">
-														<h2><a href="{% url 'movie:single' movie_slug=movie.slug %}">{{ movie.title }}</a></h2>
+														<h2><a href="{% url 'movie:single' movie_slug=movie.slug %}">{{ movie.title|truncatewords:2 }}</a></h2>
 														<p>Drama , Action</p>
 														<h4>{% ratings movie template_name='movie/rating_list_page.html' %} <i class="fa fa-star"></i></h4>
 													</div>
@@ -163,7 +163,7 @@
 												</div>
 												<div class="prs_upcom_movie_content_box">
 													<div class="prs_upcom_movie_content_box_inner">
-														<h2><a href="{% url 'movie:single' movie_slug=movie.slug %}">{{ movie.title }}</a></h2>
+														<h2><a href="{% url 'movie:single' movie_slug=movie.slug %}">{{ movie.title|truncatewords:2 }}</a></h2>
 														<p>Drama , Acation</p>
 														<h4>{% ratings movie template_name='movie/rating_list_page.html' %} <i class="fa fa-star"></i></h4>
 													</div>
@@ -215,7 +215,7 @@
 												</div>
 												<div class="prs_upcom_movie_content_box">
 													<div class="prs_upcom_movie_content_box_inner">
-														<h2><a href="{% url 'movie:single' movie_slug=movie.slug %}">{{ movie.title }}</a></h2>
+														<h2><a href="{% url 'movie:single' movie_slug=movie.slug %}">{{ movie.title|truncatewords:2 }}</a></h2>
 														<p>Drama , Action</p>
 														<h4>{% ratings movie template_name='movie/rating_list_page.html' %} <i class="fa fa-star"></i></h4>
 													</div>
@@ -251,7 +251,7 @@
 												</div>
 												<div class="prs_upcom_movie_content_box">
 													<div class="prs_upcom_movie_content_box_inner">
-														<h2><a href="{% url 'movie:single' movie_slug=movie.slug %}">{{ movie.title }}</a></h2>
+														<h2><a href="{% url 'movie:single' movie_slug=movie.slug %}">{{ movie.title|truncatewords:2 }}</a></h2>
 														<p>Drama , Acation</p>
 														<h4>{% ratings movie template_name='movie/rating_list_page.html' %} <i class="fa fa-star"></i></h4>
 													</div>
@@ -303,7 +303,7 @@
 												</div>
 												<div class="prs_upcom_movie_content_box">
 													<div class="prs_upcom_movie_content_box_inner">
-														<h2><a href="{% url 'movie:single' movie_slug=movie.slug %}">{{ movie.title }}</a></h2>
+														<h2><a href="{% url 'movie:single' movie_slug=movie.slug %}">{{ movie.title|truncatewords:2 }}</a></h2>
 														<p>Drama , Acation</p>
 														<h4>{% ratings movie template_name='movie/rating_list_page.html' %} <i class="fa fa-star"></i></h4>
 													</div>
@@ -339,7 +339,7 @@
 												</div>
 												<div class="prs_upcom_movie_content_box">
 													<div class="prs_upcom_movie_content_box_inner">
-														<h2><a href="{% url 'movie:single' movie_slug=movie.slug %}">{{ movie.title }}</a></h2>
+														<h2><a href="{% url 'movie:single' movie_slug=movie.slug %}">{{ movie.title|truncatewords:2 }}</a></h2>
 														<p>Drama , Acation</p>
 														<h4>{% ratings movie template_name='movie/rating_list_page.html' %} <i class="fa fa-star"></i></h4>
 													</div>
