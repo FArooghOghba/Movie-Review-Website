@@ -128,8 +128,18 @@
 												<div class="prs_upcom_movie_content_box">
 													<div class="prs_upcom_movie_content_box_inner">
 														<h2><a href="{% url 'movie:single' movie_slug=movie.slug %}">{{ movie.title|truncatewords:2 }}</a></h2>
-														<p>Drama , Action</p>
-														<h4>{% ratings movie template_name='movie/rating_list_page.html' %} <i class="fa fa-star"></i></h4>
+														<p>
+															{% for genre in movie.genre.all %}
+																{% if forloop.counter == 3 %}
+																	{{ genre.title|truncatechars:4 }}
+																{% elif not forloop.last %}
+																	{{ genre.title|title }},
+																{% else %}
+																	{{ genre.title|title }}
+																{% endif %}
+															{% endfor %}
+														</p>
+														<h5>Not Released Yet</h5>
 													</div>
 													<div class="prs_upcom_movie_content_box_inner_icon">
 														<ul>
@@ -164,8 +174,18 @@
 												<div class="prs_upcom_movie_content_box">
 													<div class="prs_upcom_movie_content_box_inner">
 														<h2><a href="{% url 'movie:single' movie_slug=movie.slug %}">{{ movie.title|truncatewords:2 }}</a></h2>
-														<p>Drama , Acation</p>
-														<h4>{% ratings movie template_name='movie/rating_list_page.html' %} <i class="fa fa-star"></i></h4>
+														<p>
+															{% for genre in movie.genre.all %}
+																{% if forloop.counter == 3 %}
+																	{{ genre.title|truncatechars:4 }}
+																{% elif not forloop.last %}
+																	{{ genre.title|title }},
+																{% else %}
+																	{{ genre.title|title }}
+																{% endif %}
+															{% endfor %}
+														</p>
+														<h5>Not Released Yet</h5>
 													</div>
 													<div class="prs_upcom_movie_content_box_inner_icon">
 														<ul>
@@ -216,8 +236,20 @@
 												<div class="prs_upcom_movie_content_box">
 													<div class="prs_upcom_movie_content_box_inner">
 														<h2><a href="{% url 'movie:single' movie_slug=movie.slug %}">{{ movie.title|truncatewords:2 }}</a></h2>
-														<p>Drama , Action</p>
-														<h4>{% ratings movie template_name='movie/rating_list_page.html' %} <i class="fa fa-star"></i></h4>
+														<p>
+															{% for genre in movie.genre.all %}
+																{% if forloop.counter == 3 %}
+																	{{ genre.title|truncatechars:4 }}
+																{% elif not forloop.last %}
+																	{{ genre.title|title }},
+																{% else %}
+																	{{ genre.title|title }}
+																{% endif %}
+															{% endfor %}
+														</p>
+														{% for rate in movie.rating.all %}
+															<h4>{{ rate.average|floatformat:"1" }} <i class="fa fa-star"></i></h4>
+														{% endfor %}
 													</div>
 													<div class="prs_upcom_movie_content_box_inner_icon">
 														<ul>
@@ -252,8 +284,20 @@
 												<div class="prs_upcom_movie_content_box">
 													<div class="prs_upcom_movie_content_box_inner">
 														<h2><a href="{% url 'movie:single' movie_slug=movie.slug %}">{{ movie.title|truncatewords:2 }}</a></h2>
-														<p>Drama , Acation</p>
-														<h4>{% ratings movie template_name='movie/rating_list_page.html' %} <i class="fa fa-star"></i></h4>
+														<p>
+															{% for genre in movie.genre.all %}
+																{% if forloop.counter == 3 %}
+																	{{ genre.title|truncatechars:4 }}
+																{% elif not forloop.last %}
+																	{{ genre.title|title }},
+																{% else %}
+																	{{ genre.title|title }}
+																{% endif %}
+															{% endfor %}
+														</p>
+														{% for rate in movie.rating.all %}
+															<h4>{{ rate.average|floatformat:"1" }} <i class="fa fa-star"></i></h4>
+														{% endfor %}
 													</div>
 													<div class="prs_upcom_movie_content_box_inner_icon">
 														<ul>
@@ -304,8 +348,20 @@
 												<div class="prs_upcom_movie_content_box">
 													<div class="prs_upcom_movie_content_box_inner">
 														<h2><a href="{% url 'movie:single' movie_slug=movie.slug %}">{{ movie.title|truncatewords:2 }}</a></h2>
-														<p>Drama , Acation</p>
-														<h4>{% ratings movie template_name='movie/rating_list_page.html' %} <i class="fa fa-star"></i></h4>
+														<p>
+															{% for genre in movie.genre.all %}
+																{% if forloop.counter == 3 %}
+																	{{ genre.title|truncatechars:4 }}
+																{% elif not forloop.last %}
+																	{{ genre.title|title }},
+																{% else %}
+																	{{ genre.title|title }}
+																{% endif %}
+															{% endfor %}
+														</p>
+														{% for rate in movie.rating.all %}
+															<h4>{{ rate.average|floatformat:"1" }} <i class="fa fa-star"></i></h4>
+														{% endfor %}
 													</div>
 													<div class="prs_upcom_movie_content_box_inner_icon">
 														<ul>
@@ -340,8 +396,20 @@
 												<div class="prs_upcom_movie_content_box">
 													<div class="prs_upcom_movie_content_box_inner">
 														<h2><a href="{% url 'movie:single' movie_slug=movie.slug %}">{{ movie.title|truncatewords:2 }}</a></h2>
-														<p>Drama , Acation</p>
-														<h4>{% ratings movie template_name='movie/rating_list_page.html' %} <i class="fa fa-star"></i></h4>
+														<p>
+															{% for genre in movie.genre.all %}
+																{% if forloop.counter == 3 %}
+																	{{ genre.title|truncatechars:4 }}
+																{% elif not forloop.last %}
+																	{{ genre.title|title }},
+																{% else %}
+																	{{ genre.title|title }}
+																{% endif %}
+															{% endfor %}
+														</p>
+														{% for rate in movie.rating.all %}
+															<h4>{{ rate.average|floatformat:"1" }} <i class="fa fa-star"></i></h4>
+														{% endfor %}
 													</div>
 													<div class="prs_upcom_movie_content_box_inner_icon">
 														<ul>

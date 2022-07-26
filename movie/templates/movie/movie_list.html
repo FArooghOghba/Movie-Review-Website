@@ -107,7 +107,9 @@
 																	{% endif %}
 																{% endfor %}
 															</p>
-															<h4>{% ratings movie template_name='movie/rating_list_page.html' %} <i class="fa fa-star"></i></h4>
+															{% for rate in movie.rating.all %}
+																<h4>{{ rate.average|floatformat:"1" }} <i class="fa fa-star"></i></h4>
+															{% endfor %}
 														</div>
 														<div class="prs_upcom_movie_content_box_inner_icon">
 															<ul>
@@ -170,7 +172,10 @@
 																{% for genre in movie.genre.all %}
 																	{{ genre.title|title }} {% if not forloop.last %},{% endif %}
 																{% endfor %}
-																&nbsp;&nbsp;{% ratings movie template_name='movie/rating_list_page.html' %}  <i class="fa fa-star"></i>
+																&nbsp;&nbsp;
+																{% for rate in movie.rating.all %}
+																	{{ rate.average|floatformat:"1" }} <i class="fa fa-star"></i>
+																{% endfor %}
 															</p>
 
 															<h4>Movie Director - Jhon Doe</h4>

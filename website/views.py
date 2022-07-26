@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.utils import timezone
-from django.db.models import Q
 from datetime import timedelta
 
 from movie.models import Movie
@@ -12,9 +11,9 @@ def index_view(request):
     today = timezone.now()
     last_tree_month = today - timedelta(days=90)
 
-    movies = Movie.objects.all()
+    movies = Movie.objects.prefetch_related('genre').all()
     upcoming = movies.filter(release_date__gt=today)[:8]
-    best_in_library = movies.filter(rating__gte=7.0)[:8]
+    best_in_library = movies.filter(rating__average__gte=7.0).order_by('-rating__average')[:8]
     released = movies.filter(release_date__range=(last_tree_month, today))[:8]
 
     context = {
