@@ -1,3 +1,4 @@
+{% load movie_tags %}
 {% load i18n %}
 {% block rating_style %}
 <style>
@@ -135,10 +136,10 @@
 
 				<div class="st_slider_rating_btn_heart">
 
-					<h5><i class="fa fa-heart"></i> 85%</h5>
+					<h5><i class="fa fa-heart"></i>{{ rating.average|popularity_percent }}%</h5>
 					<h4>
 						{% block rating_count %}
-							<span class='star-ratings-rating-value'>{{ rating.count }}</span> {% trans 'votes' %}
+							<span class='star-ratings-rating-value'>{{ rating.count }}</span> {% trans 'vote' %}{{ rating.count|pluralize }}
 						{% endblock rating_count %}
 					</h4>
 				</div>

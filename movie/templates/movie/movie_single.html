@@ -2,6 +2,7 @@
 {% block title %}Movie{% endblock %}
 {% load static %}
 {% load ratings %}
+{% load movie_tags %}
 
 {% block content %}
 
@@ -17,31 +18,37 @@
 								<img src="{% static 'images/index_III/icon.png' %}" alt="img">
 							</a>
 							<h3>{{ movie.title }}</h3>
-							<p>ENGLISH, HINDI, TAMIL</p>
-							<h4>ACTION | Adventure | Fantasy</h4>
+							<h4>
+								{% for genre in movie.genre.all %}
+									{{ genre }}
+									{% if not forloop.last %}
+										 |
+									{% endif %}
+								{% endfor %}
+							</h4>
 							<h5><span>2d</span> <span>3d</span> <span>D 4DX</span> <span>Imax 3D</span></h5>
 						</div>
 						<div class="st_video_slide_social float_left">
-						<div class="st_slider_rating_btn_heart st_slider_rating_btn_heart_5th">
-								<h5><i class="fa fa-heart"></i> 85%</h5>
-								<h4>52,291 votes</h4>
-							</div>
-							<div class="st_video_slide_social_left float_left">
-								<ul>
-									<li><a href="#"><i class="fa fa-facebook-f"></i></a>
-									</li>
-									<li><a href="#"><i class="fa fa-twitter"></i></a>
-									</li>
-									<li><a href="#"><i class="fa fa-linkedin"></i></a>
-									</li>
-									<li><a href="#"><i class="fa fa-youtube"></i></a>
-									</li>
-								</ul>
-							</div>
+<!--							<div class="st_slider_rating_btn_heart st_slider_rating_btn_heart_5th">-->
+<!--								<h5><i class="fa fa-heart"></i> 85%</h5>-->
+<!--								<h4>52,291 votes</h4>-->
+<!--							</div>-->
+<!--							<div class="st_video_slide_social_left float_left">-->
+<!--								<ul>-->
+<!--									<li><a href="#"><i class="fa fa-facebook-f"></i></a>-->
+<!--									</li>-->
+<!--									<li><a href="#"><i class="fa fa-twitter"></i></a>-->
+<!--									</li>-->
+<!--									<li><a href="#"><i class="fa fa-linkedin"></i></a>-->
+<!--									</li>-->
+<!--									<li><a href="#"><i class="fa fa-youtube"></i></a>-->
+<!--									</li>-->
+<!--								</ul>-->
+<!--							</div>-->
 							<div class="st_video_slide_social_right float_left">
 								<ul>
-									<li data-animation="animated fadeInUp" class=""><i class="far fa-calendar-alt"></i> 14 Dec, 2022</li>
-									<li data-animation="animated fadeInUp" class=""><i class="far fa-clock"></i> 2 hrs 23 mins</li>
+									<li data-animation="animated fadeInUp" class=""><i class="far fa-calendar-alt"></i>{{ movie.release_date|date:"d M, Y"}}</li>
+									<li data-animation="animated fadeInUp" class=""><i class="far fa-clock"></i>{{ movie.runtime|duration }}</li>
 								</ul>
 							</div>
 						</div>
@@ -98,11 +105,10 @@
 							<div class="col-md-12">
 								<div class="prs_upcome_tabs_wrapper prs_upcome_tabs_wrapper_mss float_left">
 									<ul class="nav nav-tabs" role="tablist">
-							<li role="presentation" class="active"><a href="#home" aria-controls="best" role="tab" data-toggle="tab">Summary</a>
-							</li>
-							<li role="presentation"><a href="#menu2" aria-controls="trand" role="tab" data-toggle="tab">Behind The Scenes</a>
-							</li>
-						</ul>
+										<li role="presentation" class="active"><a href="#home" aria-controls="best" role="tab" data-toggle="tab">Summary</a>
+										</li>
+
+									</ul>
 								</div>
 							</div>
 							<div class="col-md-12">
@@ -190,52 +196,6 @@
 																<h6>As Arthur</h6>
 															</div>
 														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div id="menu2" class="tab-pane fade">
-										<div class="row">
-											<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-												<div class="prs_ms_scene_slider_img prs_ms_scene_slider_img22">
-													<img src="{% static 'images/content/movie_single/sc1.jpg' %}" alt="scene_img">
-													<div class="prs_ms_scene_img_overlay">	<a href="{% static 'images/content/movie_single/sc1.jpg' %}" class="venobox info" data-title="PORTFOLIO TITTLE" data-gall="gall12"><i class="flaticon-tool"></i></a>
-													</div>
-												</div>
-											</div>
-											<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-												<div class="prs_ms_scene_slider_img prs_ms_scene_slider_img22">
-													<img src="{% static 'images/content/movie_single/sc2.jpg' %}" alt="scene_img">
-													<div class="prs_ms_scene_img_overlay">	<a href="{% static 'images/content/movie_single/sc2.jpg' %}" class="venobox info" data-title="PORTFOLIO TITTLE" data-gall="gall12"><i class="flaticon-tool"></i></a>
-													</div>
-												</div>
-											</div>
-											<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-												<div class="prs_ms_scene_slider_img prs_ms_scene_slider_img22">
-													<img src="{% static 'images/content/movie_single/sc3.jpg' %}" alt="scene_img">
-													<div class="prs_ms_scene_img_overlay">	<a href="{% static 'images/content/movie_single/sc3.jpg' %}" class="venobox info" data-title="PORTFOLIO TITTLE" data-gall="gall12"><i class="flaticon-tool"></i></a>
-													</div>
-												</div>
-											</div>
-											<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-												<div class="prs_ms_scene_slider_img prs_ms_scene_slider_img22">
-													<img src="{% static 'images/content/movie_single/sc4.jpg' %}" alt="scene_img">
-													<div class="prs_ms_scene_img_overlay">	<a href="{% static 'images/content/movie_single/sc4.jpg' %}" class="venobox info" data-title="PORTFOLIO TITTLE" data-gall="gall12"><i class="flaticon-tool"></i></a>
-													</div>
-												</div>
-											</div>
-											<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-												<div class="prs_ms_scene_slider_img prs_ms_scene_slider_img22">
-													<img src="{% static 'images/content/movie_single/sc5.jpg' %}" alt="scene_img">
-													<div class="prs_ms_scene_img_overlay">	<a href="{% static 'images/content/movie_single/sc5.jpg' %}" class="venobox info" data-title="PORTFOLIO TITTLE" data-gall="gall12"><i class="flaticon-tool"></i></a>
-													</div>
-												</div>
-											</div>
-											<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-												<div class="prs_ms_scene_slider_img prs_ms_scene_slider_img22">
-													<img src="{% static 'images/content/movie_single/sc6.jpg' %}" alt="scene_img">
-													<div class="prs_ms_scene_img_overlay">	<a href="{% static 'images/content/movie_single/sc6.jpg' %}" class="venobox info" data-title="PORTFOLIO TITTLE" data-gall="gall12"><i class="flaticon-tool"></i></a>
 													</div>
 												</div>
 											</div>
