@@ -11,7 +11,7 @@ def index_view(request):
     today = timezone.now()
     last_tree_month = today - timedelta(days=90)
 
-    movies = Movie.objects.prefetch_related('genre').all()
+    movies = Movie.objects.prefetch_related('genre', 'rating').all()
     upcoming = movies.filter(release_date__gt=today)[:8]
     best_in_library = movies.filter(rating__average__gte=7.0).order_by('-rating__average')[:8]
     released = movies.filter(release_date__range=(last_tree_month, today))[:8]

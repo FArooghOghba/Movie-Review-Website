@@ -9,15 +9,18 @@
             </button>
         </div>
         <div class="prs_mcc_bro_title_wrapper">
-            <h2>browse title</h2>
+            <h2>browse genre</h2>
             <ul>
                 <li>
-                    <i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a href="#">All <span>{{ all_movie_count }}</span></a>
+                    <i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a href="{% url 'movie:list' %}">All <span>{{ all_movie_count }}</span></a>
                 </li>
 
                 {% for genre in movies_genres_count %}
                     <li>
-                        <i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a href="#">{{ genre.title|title }} <span>{{ genre.movie_count }}</span></a>
+                        <i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;
+                        <a href="{% url 'movie:list' %}?genre={{ genre.slug }}">
+                            {{ genre.title|title }} <span>{{ genre.movie_count }}</span>
+                        </a>
                     </li>
                 {% endfor %}
 

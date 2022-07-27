@@ -7,10 +7,17 @@ from movie.models import Movie
 # Create your views here.
 
 def movie_list_view(request):
-    movies = Movie.objects.prefetch_related('genre').all()
-    # rating = Movie.objects.filter()
-    # rating = AbstractBaseRating.objects.filter(average__gte=7.0)
-    # print(rating)
+    genre = request.GET.get('genre')
+
+    if genre is not None:
+        movies = Movie.objects \
+            .prefetch_related('genre', 'rating') \
+            .filter(genre__title=genre)
+    else:
+        movies = Movie.objects \
+            .prefetch_related('genre', 'rating') \
+            .filter(rating__average__gte=7.0) \
+            .order_by('-rating__average')
 
     paginator = Paginator(movies, 6)
     page_number = request.GET.get('page')
