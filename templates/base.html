@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 
+{% load movie_tags %}
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
 <!--[if !IE]><!-->
@@ -18,7 +19,7 @@
 	{% block content %}
     {% endblock content%}
 
-	{% include 'theater_slider.html'%}
+	{% movie_in_theater_slider %}
 	{% include 'footer.html' %}
 	{% include 'scripts.html' %}
 </body>

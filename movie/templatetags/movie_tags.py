@@ -1,5 +1,8 @@
+from datetime import timedelta
+
 from django import template
 from django.db.models import Count
+from django.utils import timezone
 
 from movie.models import Genre, Movie
 
@@ -17,6 +20,20 @@ def get_genres_count():
         'all_movie_count': all_movie_count,
         'movies_genres_count': movies_genres_count
     }
+
+
+@register.inclusion_tag('movie/theater_slider.html')
+def movie_in_theater_slider():
+    today = timezone.now()
+    last_tree_month = today - timedelta(days=90)
+
+    movies = Movie.objects \
+        .prefetch_related('genre', 'rating') \
+        .filter(rating__average__gte=7.0) \
+        .filter(release_date__range=(last_tree_month, today)) \
+        .order_by('-rating__average')[:7]
+
+    return {'movies': movies}
 
 
 @register.filter

@@ -1,0 +1,68 @@
+
+{% load static %}
+
+<!-- prs theater Slider Start -->
+<div class="prs_theater_main_slider_wrapper">
+    <div class="prs_theater_img_overlay"></div>
+    <div class="prs_theater_sec_heading_wrapper">
+        <h2>TOP MOVIES IN THEATRES</h2>
+    </div>
+    <div class="wrap-album-slider">
+        <ul class="album-slider">
+
+            {% for movie in movies %}
+                <li class="album-slider__item">
+                    <figure class="album">
+                        <div class="prs_upcom_movie_box_wrapper">
+                            <div class="prs_upcom_movie_img_box">
+                                <img src="{{ movie.poster.url }}" alt="movie_img"/>
+                                <div class="prs_upcom_movie_img_overlay"></div>
+                                <div class="prs_upcom_movie_img_btn_wrapper">
+                                    <ul>
+                                        <li>
+                                            <a class="test-popup-link button" href="{{ movie.trailer }}">View Trailer</a>
+                                        </li>
+                                        <li>
+                                            <a href="{% url 'movie:single' movie_slug=movie.slug %}">View Details</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="prs_upcom_movie_content_box">
+                                <div class="prs_upcom_movie_content_box_inner">
+                                    <h2><a href="{% url 'movie:single' movie_slug=movie.slug %}">{{ movie.title|truncatewords:2 }}</a></h2>
+                                    <p>
+                                        {% for genre in movie.genre.all %}
+                                            {% if forloop.counter == 3 %}
+                                                {{ genre.title|truncatechars:4 }}
+                                            {% elif not forloop.last %}
+                                                {{ genre.title|title }},
+                                            {% else %}
+                                                {{ genre.title|title }}
+                                            {% endif %}
+                                        {% endfor %}
+                                    </p>
+                                    {% for rate in movie.rating.all %}
+                                        <h4>{{ rate.average|floatformat:"1" }} <i class="fa fa-star"></i></h4>
+                                    {% endfor %}
+                                </div>
+                                <div class="prs_upcom_movie_content_box_inner_icon">
+                                    <ul>
+                                        <li>
+                                            <a href="movie_booking.html"><i class="fa fa-star-o"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End album body -->
+                    </figure>
+                    <!-- End album -->
+                </li>
+            {% endfor %}
+                <!-- End album slider item -->
+        </ul>
+        <!-- End slider -->
+    </div>
+</div>
+<!-- prs theater Slider End -->
