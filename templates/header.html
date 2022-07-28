@@ -180,17 +180,21 @@
             </div>
             <div class="product-heading">
                 <div class="con">
-                    <select>
-                        <option>All Categories</option>
-                        <option>Movie</option>
-                        <option>Video</option>
-                        <option>Music</option>
-                        <option>TV-Show</option>
-                    </select>
-                    <input type="text" placeholder="Search Movie">
-                    <button type="submit"><i class="flaticon-tool"></i>
-                    </button>
+                    <form action="{% url 'movie:search' %}" method="get">
+                        <select name="category">
+                            <option value="all">All Categories</option>
+
+                            <option value="movie">Movie</option>
+                            <option value="blog">Blog</option>
+
+                        </select>
+                        <input type="text" name="search" placeholder="Search Movie">
+                        <button type="submit">
+                            <i class="flaticon-tool"></i>
+                        </button>
+                    </form>
                 </div>
+
             </div>
         </div>
         <div id="mobile-nav" data-prevent-default="true" data-mouse-events="true">
