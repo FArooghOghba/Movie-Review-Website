@@ -14,7 +14,7 @@
 					<div class="st_video_slider_inner_wrapper float_left">
 						<div class="st_video_slider_overlay"></div>
 						<div class="st_video_slide_sec float_left">
-							<a rel='external' href='https://www.youtube.com/embed/ryzOXAO0Ss0' title='title' class="test-popup-link">
+							<a rel='external' href='{{ movie.trailer }}' title='title' class="test-popup-link">
 								<img src="{% static 'images/index_III/icon.png' %}" alt="img">
 							</a>
 							<h3>{{ movie.title }}</h3>
@@ -60,7 +60,30 @@
 	<!-- prs video top End -->
 
 	<!-- st slider rating wrapper Start -->
-	{% ratings movie template_name='movie/rating_detail_page.html' %}
+	{% if movie.release_date|upcoming %}
+
+		<div class="st_slider_rating_main_wrapper float_left">
+			<div class="container">
+				<div class="st_slider_rating_left">
+					<div class="st_rating_box">
+						<h3>The movie has not been released yet</h3>
+					</div>
+				</div>
+				<div class="st_slider_rating_right">
+					<div class="st_slider_rating_btn prs_animate_btn1">
+						<ul>
+							<li data-animation="animated fadeInUp">
+								<a href="#" class="button button--tamaya prs_upcom_main_btn" data-text="latest news"><span>latest news</span></a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	{% else %}
+		{% ratings movie template_name='movie/rating_detail_page.html' %}
+	{% endif %}
 	<!-- st slider rating wrapper End -->
 
 	<!-- st slider sidebar wrapper Start -->
@@ -214,14 +237,14 @@
 									<p>Highest grossing movie in Mumbai in last 24 hours</p>	<a href="#">Know Box Office Report</a>
 								</div>
 							</div>
-							<div class="col-md-12">
-								<div class="st_ind_sidebar_md_textbox_btn float_left">
-									<ul>
-										<li>	<a href="#">Corporate booking &nbsp; <i class="fas fa-long-arrow-alt-right"></i></a>
-										</li>
-									</ul>
-								</div>
-							</div>
+<!--							<div class="col-md-12">-->
+<!--								<div class="st_ind_sidebar_md_textbox_btn float_left">-->
+<!--									<ul>-->
+<!--										<li>	<a href="#">Corporate booking &nbsp; <i class="fas fa-long-arrow-alt-right"></i></a>-->
+<!--										</li>-->
+<!--									</ul>-->
+<!--								</div>-->
+<!--							</div>-->
 							<div class="col-md-12">
 								<div class="st_ind_sidebar_advertiz st_ind_sidebar_advertiz_md float_left">
 									<a href="#">

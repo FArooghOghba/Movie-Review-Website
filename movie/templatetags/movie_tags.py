@@ -49,3 +49,10 @@ def duration(movie_duration):
 def popularity_percentage(rating):
     result = (rating * 100) / 10
     return round(result)
+
+
+@register.filter
+def upcoming(date):
+    today = timezone.now().date()
+    if date > today:
+        return True
