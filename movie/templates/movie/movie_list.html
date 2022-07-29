@@ -87,7 +87,7 @@
 														<div class="prs_upcom_movie_img_btn_wrapper">
 															<ul>
 																<li>
-																	<a id="trailer" onclick="magnificPopup()" class="test-popup-link button" href="{{ movie.trailer }}">View Trailer</a>
+																	<a id="trailer" class="test-popup-link button" href="{{ movie.trailer }}">View Trailer</a>
 																</li>
 																<li>
 																	<a href="{% url 'movie:single' movie_slug=movie.slug %}">View Details</a>
@@ -196,7 +196,7 @@
 														<div class="prs_mcc_list_bottom_cont_wrapper">
 															<p>{{ movie.synopsis|truncatewords:25 }}</p>
 															<ul>
-																<li><a href="{{ movie.trailer }}">View Trailer</a>
+																<li><a class="test-popup-link button" href="{{ movie.trailer }}">View Trailer</a>
 																</li>
 																<li><a href="{% url 'movie:single' movie_slug=movie.slug %}">View Details</a>
 																</li>
