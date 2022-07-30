@@ -5950,6 +5950,9 @@ body.active #mobile-nav {
 .hs_blog_box2_main_wrapper{
 	margin-top:60px;
 }
+.hs_blog_box2_main_wrapper_bottom{
+	margin-bottom:60px;
+}
 .hs_blog_box1_img_wrapper{
 	float:left;
 	width:100%;
