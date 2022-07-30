@@ -38,11 +38,15 @@ def movie_in_theater_slider():
 
 @register.filter
 def duration(movie_duration):
-    total_seconds = int(movie_duration.total_seconds())
-    hours = total_seconds // 3600
-    minutes = (total_seconds % 3600) // 60
+    movie_duration_tot_sec = movie_duration.total_seconds()
+    if movie_duration_tot_sec > 0:
+        total_seconds = int(movie_duration_tot_sec)
+        hours = total_seconds // 3600
+        minutes = (total_seconds % 3600) // 60
 
-    return f'{hours} hrs {minutes} mins'
+        return f'{hours} hrs {minutes} mins'
+
+    return ''
 
 
 @register.filter(name="popularity_percent")
