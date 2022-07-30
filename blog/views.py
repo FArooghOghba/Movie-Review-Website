@@ -1,13 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
-from .models import Blog
+from .models import Post
 
 
 # Create your views here.
 
 def blog_list_view(request):
-    blogs = Blog.objects.all()
+    blogs = Post.objects.all()
 
     paginator = Paginator(blogs, 3)
     page_number = request.GET.get('page')

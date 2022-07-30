@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
-class Blog(models.Model):
+class Post(models.Model):
     author = models.ForeignKey(
         User,
         on_delete=models.SET_NULL,

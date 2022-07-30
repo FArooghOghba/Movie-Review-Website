@@ -5,7 +5,7 @@ from blog.models import *
 
 # Register your models here.
 
-@admin.register(Blog)
+@admin.register(Post)
 class BlogAdmin(admin.ModelAdmin):
     list_display = [
         'title',
