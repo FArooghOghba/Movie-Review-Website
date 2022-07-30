@@ -31,21 +31,21 @@
 				<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
 					<div class="hs_blog_left_sidebar_main_wrapper">
 						<div class="row">
-							{% for blog in all_post_pages %}
+							{% for post in all_post_pages %}
 								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 								<div class="hs_blog_box1_main_wrapper hs_blog_box2_main_wrapper_bottom">
 									<div class="hs_blog_box1_img_wrapper">
-										<img src="{{ blog.image.url }}" alt="blog_img">
+										<img src="{{ post.image.url }}" alt="blog_img">
 									</div>
 									<div class="hs_blog_box1_cont_main_wrapper">
 										<div class="hs_blog_cont_heading_wrapper">
 											<ul>
-												<li>{{ blog.published_date|date:'F d, Y' }}</li>
-												<li>by {{ blog.author|title }}</li>
+												<li>{{ post.published_date|date:'F d, Y' }}</li>
+												<li>by {{ post.author|title }}</li>
 											</ul>
-											<h2>{{ blog.title }}</h2>
-											<p>{{ blog.content|truncatewords:50 }}</p>
-											<h5><a href="#">Read More <i class="fa fa-long-arrow-right"></i></a></h5>
+											<h2>{{ post.title }}</h2>
+											<p>{{ post.content|truncatewords:50 }}</p>
+											<h5><a href="{% url 'blog:single' post_slug=post.slug %}">Read More <i class="fa fa-long-arrow-right"></i></a></h5>
 										</div>
 									</div>
 									<div class="hs_blog_box1_bottom_cont_main_wrapper">

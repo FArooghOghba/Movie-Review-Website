@@ -22,5 +22,8 @@ def blog_list_view(request):
     return render(request, template_name='blog/blog_list.html', context=context)
 
 
-def blog_single_view(request):
-    return render(request, template_name='blog/blog_single.html')
+def blog_single_view(request, post_slug):
+    post = get_object_or_404(Post, slug=post_slug)
+
+    context = {'post': post}
+    return render(request, template_name='blog/blog_single.html', context=context)
