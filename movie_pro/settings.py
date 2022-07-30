@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'star_ratings',
 
     'website.apps.WebsiteConfig',
-    'movie.apps.MovieConfig'
+    'movie.apps.MovieConfig',
+    'blog.apps.BlogConfig'
 ]
 
 MIDDLEWARE = [

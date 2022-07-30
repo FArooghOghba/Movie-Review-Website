@@ -24,10 +24,6 @@ def index_view(request):
     return render(request, template_name='website/index.html', context=context)
 
 
-def blog_list_view(request):
-    return render(request, template_name='website/blog_list.html')
-
-
 def about_view(request):
     return render(request, template_name='website/about.html')
 
