@@ -112,11 +112,7 @@
 
 				<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
 					<div class="hs_blog_right_sidebar_main_wrapper">
-						<div class="prs_mcc_left_searchbar_wrapper">
-							<input type="text" placeholder="Search Movie">
-							<button><i class="flaticon-tool"></i>
-							</button>
-						</div>
+						{% include 'blog/blog_search_post.html' %}
 						<div class="prs_bc_right_about_wrapper">
 							<img src="{% static 'images/content/blog_category/side_img1.jpg' %}" alt="side_img">
 							<h2>About Presenter</h2>
