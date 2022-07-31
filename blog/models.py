@@ -4,6 +4,14 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
+class Category(models.Model):
+    title = models.CharField(max_length=255)
+    slug = models.SlugField(unique=True)
+
+    def __str__(self):
+        return self.title
+
+
 class Post(models.Model):
     author = models.ForeignKey(
         User,
@@ -15,7 +23,7 @@ class Post(models.Model):
     slug = models.SlugField(unique=True)
     image = models.ImageField(upload_to='blog_post/', default='blog_post/default_image_blog.jpg')
     content = models.TextField()
-    # category
+    categories = models.ManyToManyField(Category)
     # tag
     # status
     # counted_views
