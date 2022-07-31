@@ -1,8 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.utils import timezone
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.db.models import Q
+
 from datetime import timedelta
+from itertools import chain
 
 from movie.models import Movie
+from blog.models import Post
 
 
 # Create your views here.
@@ -30,3 +35,47 @@ def about_view(request):
 
 def contact_view(request):
     return render(request, template_name='website/contact.html')
+
+
+def search_view(request):
+    if request.method == 'GET':
+        if search := request.GET.get('search'):
+            category = request.GET.get('category')
+
+            if category == 'blog':
+                query_set = Post.objects.filter(
+                    Q(title__icontains=search) |
+                    Q(content__icontains=search)
+                )
+                template = 'blog/blog_list.html'
+            elif category == 'movie':
+                query_set = Movie.objects.filter(
+                    title__icontains=search
+                )
+                template = 'movie/movie_list.html'
+            elif category == 'all':
+                movies = Movie.objects.filter(
+                    title__icontains=search
+                )
+                posts = Post.objects.filter(
+                    Q(title__icontains=search) |
+                    Q(content__icontains=search)
+                )
+                query_set = list(chain(movies, posts))
+                template = 'all_category_search.html'
+            else:
+                return redirect('website:home_page')
+
+            paginator = Paginator(query_set, 3)
+            page_number = request.GET.get('page')
+            try:
+                all_search_pages = paginator.get_page(page_number)
+            except PageNotAnInteger:
+                all_search_pages = paginator.get_page(1)
+            except EmptyPage:
+                all_search_pages = paginator.get_page(paginator.num_pages)
+
+            context = {'all_pages': all_search_pages}
+            return render(request, template_name=template, context=context)
+
+    return redirect('website:home_page')

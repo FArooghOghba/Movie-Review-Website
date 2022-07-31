@@ -43,14 +43,8 @@ def movie_single_view(request, movie_slug):
 def movie_search_view(request):
     if request.method == 'GET':
         if search := request.GET.get('search'):
-            category = request.GET.get('category')
-            if category == 'blog':
-                pass
-            elif category == 'all':
-                pass
-            else:
-                movies = Movie.objects.filter(title__icontains=search)
-                print(movies)
+
+            movies = Movie.objects.filter(title__icontains=search)
 
             paginator = Paginator(movies, 6)
             page_number = request.GET.get('page')
@@ -61,7 +55,7 @@ def movie_search_view(request):
             except EmptyPage:
                 all_movie_pages = paginator.get_page(paginator.num_pages)
 
-            context = {'all_movie_pages': all_movie_pages}
+            context = {'all_pages': all_movie_pages}
             return render(request, template_name='movie/movie_list.html', context=context)
 
     return redirect('movie:list')

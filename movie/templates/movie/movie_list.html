@@ -78,7 +78,7 @@
 								<div class="tab-content">
 									<div id="grid" class="tab-pane fade in active">
 										<div class="row">
-											{% for movie in all_movie_pages %}
+											{% for movie in all_pages %}
 												<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 prs_upcom_slide_first">
 												<div class="prs_upcom_movie_box_wrapper prs_mcc_movie_box_wrapper">
 													<div class="prs_upcom_movie_img_box">
@@ -135,14 +135,14 @@
 											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 												<div class="pager_wrapper gc_blog_pagination">
 													<ul class="pagination">
-														{% if all_movie_pages.has_previous %}
+														{% if all_pages.has_previous %}
 															<li>
-																<a href="?page={{ all_movie_pages.previous_page_number }}"><i class="flaticon-left-arrow"></i></a>
+																<a href="?page={{ all_pages.previous_page_number }}"><i class="flaticon-left-arrow"></i></a>
 															</li>
 														{% endif %}
 
-														{% for page_num in all_movie_pages.paginator.page_range %}
-															{% if all_movie_pages.number == page_num %}
+														{% for page_num in all_pages.paginator.page_range %}
+															{% if all_pages.number == page_num %}
 																<li class="page-in">
 																	<a style="border-color:black; background-color:black; color:white;" href="?page={{ page_num }}">{{ page_num }}</a>
 																</li>
@@ -153,9 +153,9 @@
 															{% endif %}
 														{% endfor %}
 
-														{% if all_movie_pages.has_next %}
+														{% if all_pages.has_next %}
 															<li>
-																<a href="?page={{ all_movie_pages.next_page_number }}"><i class="flaticon-right-arrow"></i></a>
+																<a href="?page={{ all_pages.next_page_number }}"><i class="flaticon-right-arrow"></i></a>
 															</li>
 														{% endif %}
 													</ul>
@@ -165,7 +165,7 @@
 									</div>
 									<div id="list" class="tab-pane fade">
 										<div class="row">
-											{% for movie in all_movie_pages %}
+											{% for movie in all_pages %}
 												<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 												<div class="prs_mcc_list_movie_main_wrapper">
 													<div class="prs_mcc_list_movie_img_wrapper">
@@ -211,14 +211,14 @@
 											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 												<div class="pager_wrapper gc_blog_pagination">
 													<ul class="pagination">
-														{% if all_movie_pages.has_previous %}
+														{% if all_pages.has_previous %}
 															<li>
-																<a href="?page={{ all_movie_pages.previous_page_number }}"><i class="flaticon-left-arrow"></i></a>
+																<a href="?page={{ all_pages.previous_page_number }}"><i class="flaticon-left-arrow"></i></a>
 															</li>
 														{% endif %}
 
-														{% for page_num in all_movie_pages.paginator.page_range %}
-															{% if all_movie_pages.number == page_num %}
+														{% for page_num in all_pages.paginator.page_range %}
+															{% if all_pages.number == page_num %}
 																<li>
 																	<a style="border-color:black; background-color:black; color:white;" href="?page={{ page_num }}">{{ page_num }}</a>
 																</li>
@@ -229,9 +229,9 @@
 															{% endif %}
 														{% endfor %}
 
-														{% if all_movie_pages.has_next %}
+														{% if all_pages.has_next %}
 															<li>
-																<a href="?page={{ all_movie_pages.next_page_number }}"><i class="flaticon-right-arrow"></i></a>
+																<a href="?page={{ all_pages.next_page_number }}"><i class="flaticon-right-arrow"></i></a>
 															</li>
 														{% endif %}
 													</ul>

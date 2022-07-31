@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+{% block title %}About Us{% endblock %}
+{% load static %}
+
+{% block content %}
+
+<div class="hs_blog_categories_main_wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                <div class="hs_blog_left_sidebar_main_wrapper">
+                    <div class="row">
+                        {% for search in all_pages %}
+                            {% if search.genre.all %}
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="prs_mcc_list_movie_main_wrapper hs_blog_box2_main_wrapper_bottom">
+                                        <div class="prs_mcc_list_movie_img_wrapper">
+                                            <img src="{{ search.poster.url }}" alt="categoty_img">
+                                        </div>
+                                        <div class="prs_mcc_list_movie_img_cont_wrapper">
+
+                                            <div class="prs_mcc_list_left_cont_wrapper">
+                                                <h2>{{ search.title|truncatewords:5 }}</h2>
+
+                                                <p>
+                                                    {% for genre in search.genre.all %}
+                                                        {{ genre.title|title }} {% if not forloop.last %},{% endif %}
+                                                    {% endfor %}
+                                                    &nbsp;&nbsp;
+                                                    {% for rate in search.rating.all %}
+                                                        {{ rate.average|floatformat:"1" }} <i class="fa fa-star"></i>
+                                                    {% endfor %}
+                                                </p>
+
+                                                <h4>Movie Director - Jhon Doe</h4>
+                                            </div>
+
+                                            <div class="prs_mcc_list_right_cont_wrapper">
+                                                <a href="#"><i class="fa fa-star-o"></i></a>
+                                            </div>
+
+                                            <div class="prs_mcc_list_bottom_cont_wrapper">
+                                                <p>{{ search.synopsis|truncatewords:25 }}</p>
+                                                <ul>
+                                                    <li><a class="test-popup-link button" href="{{ search.trailer }}">View Trailer</a>
+                                                    </li>
+                                                    <li><a href="{% url 'movie:single' movie_slug=search.slug %}">View Details</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% else %}
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="hs_blog_box1_main_wrapper hs_blog_box2_main_wrapper_bottom">
+                                        <div class="hs_blog_box1_img_wrapper">
+                                            <img src="{{ search.image.url }}" alt="blog_img">
+                                        </div>
+                                        <div class="hs_blog_box1_cont_main_wrapper">
+                                            <div class="hs_blog_cont_heading_wrapper">
+                                                <ul>
+                                                    <li>{{ search.published_date|date:'F d, Y' }}</li>
+                                                    <li>by {{ search.author|title }}</li>
+                                                </ul>
+                                                <h2>{{ search.title }}</h2>
+                                                <p>{{ search.content|truncatewords:50 }}</p>
+                                                <h5><a href="{% url 'blog:single' post_slug=search.slug %}">Read More <i class="fa fa-long-arrow-right"></i></a></h5>
+                                            </div>
+                                        </div>
+                                        <div class="hs_blog_box1_bottom_cont_main_wrapper">
+                                            <div class="hs_blog_box1_bottom_cont_left">
+                                                <ul>
+                                                    <li><i class="fa fa-thumbs-up"></i> &nbsp;&nbsp;<a href="#">1244 Likes</a>
+                                                    </li>
+                                                    <li><i class="fa fa-comments"></i> &nbsp;&nbsp;<a href="#">256 Comments</a>
+                                                    </li>
+                                                    <li><i class="fa fa-tags"></i> &nbsp;&nbsp;<a href="#">Presenter Movie</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="hs_blog_box1_bottom_cont_right">
+                                                <ul>
+                                                    <li><a href="#"><i class="fa fa-facebook"></i></a>
+                                                    </li>
+                                                    <li><a href="#"><i class="fa fa-youtube-play"></i></a>
+                                                    </li>
+                                                    <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                                                    </li>
+                                                    <li><a href="#"><i class="fa fa-twitter"></i></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+
+                        {% empty %}
+                            <h4>Sorry we don't have it in out database.</h4>
+                        {% endfor %}
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="pager_wrapper gc_blog_pagination">
+                                <ul class="pagination">
+                                    {% if all_pages.has_previous %}
+                                        <li>
+                                            <a href="?page={{ all_pages.previous_page_number }}"><i class="flaticon-left-arrow"></i></a>
+                                        </li>
+                                    {% endif %}
+
+                                    {% for page_num in all_pages.paginator.page_range %}
+                                        {% if all_pages.number == page_num %}
+                                            <li>
+                                                <a style="border-color:black; background-color:black; color:white;" href="?page={{ page_num }}">{{ page_num }}</a>
+                                            </li>
+                                        {% else %}
+                                            <li>
+                                                <a href="?page={{ page_num }}">{{ page_num }}</a>
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+
+                                    {% if all_pages.has_next %}
+                                        <li>
+                                            <a href="?page={{ all_pages.next_page_number }}"><i class="flaticon-right-arrow"></i></a>
+                                        </li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
