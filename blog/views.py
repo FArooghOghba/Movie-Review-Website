@@ -19,7 +19,7 @@ def blog_list_view(request):
     except EmptyPage:
         all_post_pages = paginator.get_page(paginator.num_pages)
 
-    context = {'all_post_pages': all_post_pages}
+    context = {'all_pages': all_post_pages}
     return render(request, template_name='blog/blog_list.html', context=context)
 
 
