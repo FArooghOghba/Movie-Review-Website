@@ -29,7 +29,7 @@ def blog_recent_news():
     return {'recent_news': recent_news}
 
 
-@register.inclusion_tag('blog/archives.html')
+@register.inclusion_tag('blog/blog_archives.html')
 def archives():
     this_year = timezone.now().year
     counted_month_posts = Post.objects \

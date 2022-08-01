@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% block title %}Blog{% endblock %}
-{% load blog_tags %}
 {% load static %}
 
 {% block content %}
@@ -111,30 +110,7 @@
 				</div>
 
 				<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-					<div class="hs_blog_right_sidebar_main_wrapper">
-						{% include 'blog/blog_search_post.html' %}
-						<div class="prs_bc_right_about_wrapper">
-							<img src="{% static 'images/content/blog_category/side_img1.jpg' %}" alt="side_img">
-							<h2>About Presenter</h2>
-							<p>Lorem ipsum dolor sit amet ue adipisicing elit, sed do eiuodor incididunt ut part.</p>
-							<h5><a href="#">Read More <i class="fa fa-long-arrow-right"></i></a></h5>
-						</div>
-
-						{% blog_categories_count %}
-
-						{% blog_recent_news %}
-
-						{% archives %}
-
-						<div class="prs_blog_right_sub_btn_wrapper">
-							<h2>Subscribe</h2>
-							<input type="text" placeholder="Your email id">
-							<ul>
-								<li><a href="#">Subscribe</a>
-								</li>
-							</ul>
-						</div>
-					</div>
+					{% include 'blog/blog_sidebar.html' %}
 				</div>
 			</div>
 		</div>
