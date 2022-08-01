@@ -1,0 +1,17 @@
+{% load static%}
+<div class="prs_mcc_bro_title_wrapper">
+    <h2>Recent News</h2>
+
+    {% for news in recent_news %}
+        <div class="hs_blog_right_recnt_cont_wrapper">
+            <div class="hs_footer_ln_img_wrapper">
+                <img src="{{ news.image.url }}" alt="ln_img" style="max-width:100%; height:65px;"/>
+            </div>
+            <div class="hs_footer_ln_cont_wrapper_recent_news">
+                <h4>{{ news.title|truncatewords:3 }}</h4>
+                <p>{{ news.published_date|date:'d F Y' }}</p>
+            </div>
+        </div>
+    {% endfor %}
+
+</div>

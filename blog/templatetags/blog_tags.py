@@ -19,3 +19,10 @@ def blog_categories_count():
         'categories_count': categories_count,
         'all_post_count': all_post_count
     }
+
+
+@register.inclusion_tag('blog/blog_recent_news.html')
+def blog_recent_news():
+    recent_news = Post.objects.all()[:3]
+
+    return {'recent_news': recent_news}
