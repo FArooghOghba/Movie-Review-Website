@@ -29,7 +29,7 @@ def movie_list_view(request):
     except EmptyPage:
         all_movie_pages = paginator.get_page(paginator.num_pages)
 
-    context = {'all_movie_pages': all_movie_pages}
+    context = {'all_pages': all_movie_pages}
     return render(request, template_name='movie/movie_list.html', context=context)
 
 
