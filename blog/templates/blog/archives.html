@@ -1,0 +1,14 @@
+
+<div class="prs_mcc_bro_title_wrapper">
+    <h2>This Year Archives</h2>
+    <ul>
+        {% for post in counted_month_posts %}
+            <li>
+                <i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;
+                <a href="#">{{ post.datefield|date:'F'}}
+                    <span>{{ post.count }}</span>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>

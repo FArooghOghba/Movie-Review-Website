@@ -1,5 +1,6 @@
 from django import template
 from django.db.models import Count
+from django.db.models.functions import ExtractMonth
 from django.utils import timezone
 
 from blog.models import *
@@ -26,3 +27,16 @@ def blog_recent_news():
     recent_news = Post.objects.all()[:3]
 
     return {'recent_news': recent_news}
+
+
+@register.inclusion_tag('blog/archives.html')
+def archives():
+    this_year = timezone.now().year
+    counted_month_posts = Post.objects \
+        .filter(published_date__year=this_year) \
+        .dates('published_date', 'month') \
+        .annotate(count=Count('id')) \
+        .values('datefield', 'count')
+
+    return {'counted_month_posts': counted_month_posts}
+
