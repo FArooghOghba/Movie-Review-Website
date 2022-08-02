@@ -30,6 +30,24 @@ def blog_single_view(request, post_slug):
     return render(request, template_name='blog/blog_single.html', context=context)
 
 
+def blog_like_post_view(request, post_id):
+    if request.method == 'POST':
+        post = Post.objects.get(id=post_id)
+        user = request.user
+
+        if not post.like.filter(id=user.id).exists():
+            post.like.add(user)
+            post.save()
+        else:
+            post.like.remove(user)
+            post.save()
+
+        context = {'post': post}
+        return render(request, 'blog/blog_like_post.html', context=context)
+
+    return redirect('blog:list')
+
+
 def blog_search_view(request):
     if request.method == 'GET':
         if search := request.GET.get('search'):

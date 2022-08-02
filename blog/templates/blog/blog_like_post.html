@@ -1,0 +1,19 @@
+
+<div class="list-group-horizontal btn-group" id="likesarea{{ post.id }}" role="group">
+
+    <button class="like_button_before"
+            hx-post="{% url 'blog:like_post' post_id=post.id %}"
+            hx-target="#likesarea{{ post.id }}"
+            hx-swap="outerHTML">
+
+        {% if request.user in post.like.all %}
+           <span class="iconify" data-icon="fontisto:like" style="color: red;"></span>
+            &nbsp;&nbsp;{{ post.total_like }} &nbsp;Like{{ post.total_like|pluralize }}
+        {% else %}
+            <span class="iconify" data-icon="uiw:like-o"></span>
+            &nbsp;&nbsp;{{ post.total_like }} &nbsp;Like{{ post.total_like|pluralize }}
+        {% endif %}
+
+    </button>
+
+</div>

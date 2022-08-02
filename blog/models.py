@@ -24,10 +24,10 @@ class Post(models.Model):
     image = models.ImageField(upload_to='blog_post/', default='blog_post/default_image_blog.jpg')
     content = models.TextField()
     categories = models.ManyToManyField(Category)
+    like = models.ManyToManyField(User, blank=True, related_name='collected_likes')
     # tag
     # status
     # counted_views
-    # likes
     # login require
     published_date = models.DateTimeField(null=True, blank=True)
     created_date = models.DateTimeField(auto_now_add=True)
@@ -35,6 +35,9 @@ class Post(models.Model):
 
     class Meta:
         ordering = ['-published_date']
+
+    def total_like(self):
+        return self.like.count()
 
     def __str__(self):
         return self.title

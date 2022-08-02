@@ -10142,3 +10142,9 @@ padding-top:25px;
     transition: all 0.5s;
 }
 /*---------------- st LogIn End --------------*/
+
+/*---------------- Like Button Start --------------*/
+.like_button_before{
+    border: 0;
+    background-color: white;
+}

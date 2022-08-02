@@ -27,6 +27,15 @@
 <script src="{% static 'js/plugin/rs_slider/revolution.extension.video.min.js' %}"></script>
 <script src="{% static 'js/custom.js' %}"></script>
 
+<script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+
+<script src="https://unpkg.com/htmx.org@1.6.0"></script>
+<script>
+    document.body.addEventListener('htmx:configRequest', (e) => {
+      e.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
+    })
+</script>
+
 <!-- Django Rating Star -->
 
 <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
