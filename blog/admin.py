@@ -11,10 +11,18 @@ class PostAdmin(admin.ModelAdmin):
         'title',
         'published_date'
     ]
+
     autocomplete_fields = ['categories']
+
     prepopulated_fields = {
         'slug': ['title']
     }
+
+    search_fields = [
+        'title',
+        'content',
+        'created_date'
+    ]
 
 
 @admin.register(Category)
@@ -24,3 +32,24 @@ class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {
         'slug': ['title']
     }
+
+
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    list_display = [
+        'author',
+        'post',
+        'created_date',
+        'approved'
+    ]
+
+    # list_filter = [
+    #     'author',
+    #     'approved',
+    #     'created_date'
+    # ]
+    #
+    # search_fields = [
+    #     'author',
+    #     'content'
+    # ]

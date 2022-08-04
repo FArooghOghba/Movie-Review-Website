@@ -1,0 +1,48 @@
+
+{% load static %}
+
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="prs_bs_comment_heading_wrapper">
+        <h2 class="comment_title_heading">Comments</h2>
+    </div>
+</div>
+
+{% for comment in post.get_comments %}
+    {% include 'blog/blog_reply_comment.html' with comment=comment %}
+{% empty %}
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-5" style="margin-bottom:50px;">
+        <h4>No comment yet, Be the first one.</h4>
+    </div>
+{% endfor %}
+
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="prs_bs_comment_heading_wrapper prs_bs_leave_comment_heading_wrapper">
+        <h2>Leave a comment</h2>
+    </div>
+</div>
+
+<form action="{% url 'blog:single' post_slug=post.slug %}" method="post">
+
+    {% csrf_token %}
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <input type="hidden" name="author" value="{{ request.user.id }}">
+        <input type="hidden" name="post" value="{{ post.id }}">
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="hs_kd_six_sec_input_wrapper">
+            <textarea rows="3" placeholder="Comments" name="content"></textarea>
+        </div>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="hs_kd_six_sec_btn">
+            <ul>
+                <li>
+                    <button class="hs_kd_six_sec_btn" type="submit">Send a Comment</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</form>

@@ -1,0 +1,61 @@
+
+{% load static %}
+
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="hs_rs_comment_main_wrapper hs_rs_comment_main_wrapper2" style="{% if comment.parent.author %}margin-left:76px; padding:10px; width:91%;{% endif %}">
+        <div class="hs_rs_comment_img_wrapper">
+            <img src="{% static 'images/content/blog_category/comm_img1.jpg' %}" alt="comment_img">
+        </div>
+        <div class="hs_rs_comment_img_cont_wrapper hs_rs_blog_single_comment_img_cont_wrapper">
+            <h2>
+                {{ comment.author.username }}
+                {% if comment.parent.author %}
+                     to {{ comment.parent.author.username }}
+                {% endif %}
+                <br>
+                <span>{{ comment.created_date|date:'M n , Y - l' }}</span>
+
+                <a data-toggle="collapse" href="#collapseExample{{ comment.id }}" role="button" aria-expanded="false" aria-controls="collapseExample" >
+                    - Reply
+                </a>
+
+            </h2>
+            <p>
+                {{ comment.content }}
+            </p>
+
+        </div>
+
+        <div class="collapse" id="collapseExample{{ comment.id }}">
+                <form action="{% url 'blog:reply_comment' %}" method="post">
+                    {% csrf_token %}
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <input type="hidden" name="post" value="{{ post.id }}">
+                        <input type="hidden" name="author" value="{{ request.user.id }}">
+                        <input type="hidden" name="parent" value="{{ comment.id }}">
+                        <input type="hidden" name="post_url" value="{{ post.get_absolute_url }}">
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="hs_kd_six_sec_input_wrapper">
+                            <textarea rows="1" placeholder="Reply Comment" name="content"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="hs_kd_six_sec_btn">
+                            <ul>
+                                <li>
+                                    <button class="hs_kd_six_sec_btn" type="submit">Send Reply</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+    </div>
+</div>
+
+{% for comment in comment.get_reply_comments %}
+    {% include 'blog/blog_reply_comment.html' with comment=comment %}
+{% endfor %}
+

@@ -54,7 +54,8 @@
 													{% include 'blog/blog_like_post.html' %}
 												</li>
 												<li>
-													<i class="fa fa-comments"></i> &nbsp;&nbsp;<a href="#">256 Comments</a>
+													<i class="fa fa-comments"></i> &nbsp;&nbsp;
+													{{ post.total_comment }} Comment{{ post.total_comment|pluralize }}
 												</li>
 												<li>
 													<i class="fa fa-tags"></i> &nbsp;&nbsp;<a href="#">Presenter Movie</a>
@@ -87,83 +88,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<div class="prs_bs_comment_heading_wrapper">
-									<h2>Comments</h2>
-								</div>
-							</div>
-							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<div class="hs_rs_comment_main_wrapper hs_rs_comment_main_wrapper2">
-									<div class="hs_rs_comment_img_wrapper">
-										<img src="{% static 'images/content/blog_category/comm_img1.jpg' %}" alt="comment_img">
-									</div>
-									<div class="hs_rs_comment_img_cont_wrapper hs_rs_blog_single_comment_img_cont_wrapper">
-										<h2>Joahn Doe<br> <span>Jan 2 , 2022 - Friday</span> <a href="#"> - Reply</a></h2>
-										<p>The actor, director and producer, son to well-known stunt choreographer of Bollywood, rried to one of the most vivacious, bubbly, live-wire actress, is none other than our dashing Ajay Devgan, originally named Vishal Devgan !</p>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<div class="hs_rs_comment_main_wrapper">
-									<div class="hs_rs_comment_img_wrapper">
-										<img src="{% static 'images/content/blog_category/comm_img2.jpg' %}" alt="comment_img">
-									</div>
-									<div class="hs_rs_comment_img_cont_wrapper hs_rs_blog_single_comment_img_cont_wrapper">
-										<h2>Joahn Doe<br> <span>Jan 2 , 2022 - Friday</span> <a href="#"> - Reply</a></h2>
-										<p>The actor, director and producer, son to well-known stunt choreographer of Bollywood, rried to one of the most vivacious, bubbly, live-wire actress, is none other than our dashing Ajay Devgan, originally named Vishal Devgan !</p>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<div class="hs_rs_comment_main_wrapper">
-									<div class="hs_rs_comment_img_wrapper">
-										<img src="{% static 'images/content/blog_category/comm_img3.jpg' %}" alt="comment_img">
-									</div>
-									<div class="hs_rs_comment_img_cont_wrapper hs_rs_blog_single_comment_img_cont_wrapper">
-										<h2>Joahn Doe<br> <span>Jan 2 , 2022 - Friday</span> <a href="#"> - Reply</a></h2>
-										<p>The actor, director and producer, son to well-known stunt choreographer of Bollywood, rried to one of the most vivacious, bubbly, live-wire actress, is none other than our dashing Ajay Devgan, originally named Vishal Devgan !</p>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<div class="hs_rs_comment_main_wrapper">
-									<div class="hs_rs_comment_img_wrapper">
-										<img src="{% static 'images/content/blog_category/comm_img1.jpg' %}" alt="comment_img">
-									</div>
-									<div class="hs_rs_comment_img_cont_wrapper hs_rs_blog_single_comment_img_cont_wrapper">
-										<h2>Joahn Doe<br> <span>Jan 2 , 2022 - Friday</span> <a href="#"> - Reply</a></h2>
-										<p>The actor, director and producer, son to well-known stunt choreographer of Bollywood, rried to one of the most vivacious, bubbly, live-wire actress, is none other than our dashing Ajay Devgan, originally named Vishal Devgan !</p>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<div class="prs_bs_comment_heading_wrapper prs_bs_leave_comment_heading_wrapper">
-									<h2>LEave a comment</h2>
-								</div>
-							</div>
-							<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-								<div class="hs_kd_six_sec_input_wrapper">
-									<input type="text" placeholder="Name">
-								</div>
-							</div>
-							<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-								<div class="hs_kd_six_sec_input_wrapper">
-									<input type="email" placeholder="Email">
-								</div>
-							</div>
-							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<div class="hs_kd_six_sec_input_wrapper">
-									<textarea rows="6" placeholder="Comments"></textarea>
-								</div>
-							</div>
-							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<div class="hs_kd_six_sec_btn">
-									<ul>
-										<li><a href="#">Send a Comment</a>
-										</li>
-									</ul>
-								</div>
-							</div>
+							{% include 'blog/blog_comment.html' with post=post %}
 						</div>
 					</div>
 				</div>
