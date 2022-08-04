@@ -49,11 +49,9 @@ def blog_reply_comment_view(request):
         post_url = request.POST.get('post_url')
 
         if reply_comment_form.is_valid():
-            post_id = request.POST.get('post')
             parent = request.POST.get('parent')
             new_reply_comment = reply_comment_form.save(commit=False)
 
-            new_reply_comment.post = Post(pk=post_id)
             new_reply_comment.parent = Comment(id=parent)
             new_reply_comment.save()
 

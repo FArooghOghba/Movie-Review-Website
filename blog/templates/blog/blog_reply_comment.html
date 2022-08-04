@@ -1,7 +1,7 @@
 
 {% load static %}
 
-<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="{{ comment.id }}">
     <div class="hs_rs_comment_main_wrapper hs_rs_comment_main_wrapper2" style="{% if comment.parent.author %}margin-left:76px; padding:10px; width:91%;{% endif %}">
         <div class="hs_rs_comment_img_wrapper">
             <img src="{% static 'images/content/blog_category/comm_img1.jpg' %}" alt="comment_img">
@@ -10,7 +10,7 @@
             <h2>
                 {{ comment.author.username }}
                 {% if comment.parent.author %}
-                     to {{ comment.parent.author.username }}
+                     Reply to {{ comment.parent.author.username }}
                 {% endif %}
                 <br>
                 <span>{{ comment.created_date|date:'M n , Y - l' }}</span>
