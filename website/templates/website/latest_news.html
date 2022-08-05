@@ -1,0 +1,79 @@
+
+{% load static %}
+
+<div class="prs_ln_main_wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="prs_heading_section_wrapper">
+                    <h2>Latest News</h2>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                {% with first_post=latest_news|first %}
+                    <div class="prs_ln_left_img_wrapper" style="background:url('{{ first_post.image.url }}') 100% 100% no-repeat; background-size:cover;">
+                        <div class="prs_in_left_img_overlay"></div>
+<!--                        <div class="prs_webseri_video_sec_icon_wrapper ">-->
+<!--                            <ul>-->
+<!--                                <li><a class="test-popup-link button" rel='external'-->
+<!--                                       href='https://www.youtube.com/embed/ryzOXAO0Ss0' title='title'><i-->
+<!--                                        class="flaticon-play-button"></i></a>-->
+<!--                                </li>-->
+<!--                            </ul>-->
+<!--                        </div>-->
+                        <div class="prs_prs_webseri_video_sec_icon_cont_wrapper">
+                            <p>{{ first_post.published_date|date:'d b Y' }}</p>
+                            <h2>{{ first_post.title|truncatewords:3 }}</h2>
+                            <ul>
+                                <li>
+                                    <i class="fa fa-thumbs-up"></i>&nbsp;&nbsp;
+                                    <a>{{ first_post.total_like }} Like{{ first_post.total_like|pluralize }}</a>
+                                </li>
+                                <li>
+                                    <i class="fa fa-comments-o"></i>&nbsp;&nbsp;
+                                    <a>{{ first_post.total_comment }} Comment{{ first_post.total_comment|pluralize }}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                {% endwith %}
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="prs_ln_right_main_wrapper">
+                    <div class="row">
+                        {% for post in latest_news|slice:"1:3" %}
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="prs_ln_right_first_box_wrapper">
+                                    <div class="prs_in_right_box_img_wrapper">
+                                        <img src="{{ post.image.url }}" style="height:240px;" alt="news_img"/>
+                                    </div>
+                                    <div class="prs_in_right_box_img_cont_wrapper">
+                                        <h2>
+                                            <a href="{% url 'blog:single' post_slug=post.slug %}">
+                                                {{ post.title|truncatewords:3 }}
+                                            </a>
+                                        </h2>
+                                        <h3>{{ post.published_date|date:'d b Y' }}</h3>
+                                        <p>
+                                            {{ post.content|truncatewords:15 }}
+                                        </p>
+                                        <ul>
+                                            <li>
+                                                <i class="fa fa-thumbs-up"></i>&nbsp;&nbsp;
+                                                {{ post.total_like }} Like{{ post.total_like|pluralize }}
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-comments-o"></i>&nbsp;&nbsp;
+                                                {{ post.total_comment }} Comment{{ post.total_comment|pluralize }}
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
