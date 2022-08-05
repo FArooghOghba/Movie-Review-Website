@@ -17,7 +17,6 @@ def movie_list_view(request):
     else:
         movies = Movie.objects \
             .prefetch_related('genre', 'rating') \
-            .filter(rating__average__gte=7.0) \
             .order_by('-rating__average')
 
     paginator = Paginator(movies, 6)

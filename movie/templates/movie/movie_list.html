@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% block title %}Movies{% endblock %}
 {% load static %}
-{% load ratings %}
 {% load movie_tags %}
 
 {% block content %}
@@ -79,58 +78,9 @@
 									<div id="grid" class="tab-pane fade in active">
 										<div class="row">
 											{% for movie in all_pages %}
-												<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 prs_upcom_slide_first">
-												<div class="prs_upcom_movie_box_wrapper prs_mcc_movie_box_wrapper">
-													<div class="prs_upcom_movie_img_box">
-														<img src="{{ movie.poster.url }}" alt="movie_img" />
-														<div class="prs_upcom_movie_img_overlay"></div>
-														<div class="prs_upcom_movie_img_btn_wrapper">
-															<ul>
-																<li>
-																	<a id="trailer" class="test-popup-link button" href="{{ movie.trailer }}">View Trailer</a>
-																</li>
-																<li>
-																	<a href="{% url 'movie:single' movie_slug=movie.slug %}">View Details</a>
-																</li>
-															</ul>
-														</div>
-													</div>
-													<div class="prs_upcom_movie_content_box">
-														<div class="prs_upcom_movie_content_box_inner">
-															<h2><a href="{% url 'movie:single' movie_slug=movie.slug %}">{{ movie.title|truncatewords:2 }}</a></h2>
-															<p>
-																{% for genre in movie.genre.all %}
-																	{% if forloop.counter == 3 %}
-																		{{ genre.title|truncatechars:4 }}
-																	{% elif not forloop.last %}
-																		{{ genre.title|title }},
-																	{% else %}
-																		{{ genre.title|title }}
-																	{% endif %}
-																{% endfor %}
-															</p>
-															{% for rate in movie.rating.all %}
-																{% if rate.average == 0.0 %}
-																	<h4>Not Released Yet</h4>
-																{% else %}
-																	<h4>{{ rate.average|floatformat:"1" }} <i class="fa fa-star"></i></h4>
-																{% endif %}
-															{% endfor %}
-														</div>
-														<div class="prs_upcom_movie_content_box_inner_icon">
-															<ul>
-
-																<li>
-																	<a href="movie_booking.html"><i class="fa fa-star-o"></i></a>
-																</li>
-
-															</ul>
-														</div>
-													</div>
-												</div>
-											</div>
+												{% include 'movie/movie_card.html' with movie=movie %}
 											{% empty %}
-												<h4>Sorry we don't have it in out database.</h4>
+												<h4>Sorry we don't have it in our database.</h4>
 											{% endfor %}
 											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 												{% include 'pagination.html' %}
