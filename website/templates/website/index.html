@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% block title %}Movie Pro{% endblock %}
 {% load static %}
-{% load ratings %}
 {% load website_tags %}
 
 {% block content %}
@@ -96,11 +95,20 @@
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<div class="prs_upcome_tabs_wrapper">
 						<ul class="nav nav-tabs" role="tablist">
-							<li role="presentation" class="active"><a href="#best" aria-controls="best" role="tab" data-toggle="tab">Upcoming Movies</a>
+							<li role="presentation" class="active">
+								<a href="#best" aria-controls="best" role="tab" data-toggle="tab">
+									Upcoming Movies
+								</a>
 							</li>
-							<li role="presentation"><a href="#hot" aria-controls="hot" role="tab" data-toggle="tab">Released Movies</a>
+							<li role="presentation">
+								<a href="#hot" aria-controls="hot" role="tab" data-toggle="tab">
+									Released Movies
+								</a>
 							</li>
-							<li role="presentation"><a href="#trand" aria-controls="trand" role="tab" data-toggle="tab">Best of library</a>
+							<li role="presentation">
+								<a href="#trand" aria-controls="trand" role="tab" data-toggle="tab">
+									Best of library
+								</a>
 							</li>
 						</ul>
 					</div>
@@ -108,50 +116,13 @@
 				<div class="tab-content">
 					<div role="tabpanel" class="tab-pane fade in active" id="best">
 						<div class="prs_upcom_slider_slides_wrapper">
-							<div class="owl-carousel owl-theme">
+							<div class="owl-theme">
 								<div class="item">
 									<div class="row">
 										{% for movie in upcoming|slice:":4" %}
 											<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 prs_upcom_slide_first">
-											<div class="prs_upcom_movie_box_wrapper">
-												<div class="prs_upcom_movie_img_box">
-													<img src="{{ movie.poster.url }}" alt="movie_img" />
-													<div class="prs_upcom_movie_img_overlay"></div>
-													<div class="prs_upcom_movie_img_btn_wrapper">
-														<ul>
-															<li><a class="test-popup-link button" href="{{ movie.trailer }}">View Trailer</a>
-															</li>
-															<li><a href="{% url 'movie:single' movie_slug=movie.slug %}">View Details</a>
-															</li>
-														</ul>
-													</div>
-												</div>
-												<div class="prs_upcom_movie_content_box">
-													<div class="prs_upcom_movie_content_box_inner">
-														<h2><a href="{% url 'movie:single' movie_slug=movie.slug %}">{{ movie.title|truncatewords:2 }}</a></h2>
-														<p>
-															{% for genre in movie.genre.all %}
-																{% if forloop.counter == 3 %}
-																	{{ genre.title|truncatechars:4 }}
-																{% elif not forloop.last %}
-																	{{ genre.title|title }},
-																{% else %}
-																	{{ genre.title|title }}
-																{% endif %}
-															{% endfor %}
-														</p>
-														<h5>Not Released Yet</h5>
-													</div>
-													<div class="prs_upcom_movie_content_box_inner_icon">
-														<ul>
-															<li>
-																<a href="movie_booking.html"><i class="fa fa-star-o"></i></a>
-															</li>
-														</ul>
-													</div>
-												</div>
+												{% include 'movie/movie_card.html' with movie=movie %}
 											</div>
-										</div>
 										{% endfor %}
 									</div>
 								</div>
@@ -159,45 +130,8 @@
 									<div class="row">
 										{% for movie in upcoming|slice:"4:8" %}
 											<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 prs_upcom_slide_first">
-											<div class="prs_upcom_movie_box_wrapper">
-												<div class="prs_upcom_movie_img_box">
-													<img src="{{ movie.poster.url }}" alt="movie_img" />
-													<div class="prs_upcom_movie_img_overlay"></div>
-													<div class="prs_upcom_movie_img_btn_wrapper">
-														<ul>
-															<li><a class="test-popup-link button" href="{{ movie.trailer }}">View Trailer</a>
-															</li>
-															<li><a href="{% url 'movie:single' movie_slug=movie.slug %}">View Details</a>
-															</li>
-														</ul>
-													</div>
-												</div>
-												<div class="prs_upcom_movie_content_box">
-													<div class="prs_upcom_movie_content_box_inner">
-														<h2><a href="{% url 'movie:single' movie_slug=movie.slug %}">{{ movie.title|truncatewords:2 }}</a></h2>
-														<p>
-															{% for genre in movie.genre.all %}
-																{% if forloop.counter == 3 %}
-																	{{ genre.title|truncatechars:4 }}
-																{% elif not forloop.last %}
-																	{{ genre.title|title }},
-																{% else %}
-																	{{ genre.title|title }}
-																{% endif %}
-															{% endfor %}
-														</p>
-														<h5>Not Released Yet</h5>
-													</div>
-													<div class="prs_upcom_movie_content_box_inner_icon">
-														<ul>
-															<li>
-																<a href="movie_booking.html"><i class="fa fa-star-o"></i></a>
-															</li>
-														</ul>
-													</div>
-												</div>
+												{% include 'movie/movie_card.html' with movie=movie %}
 											</div>
-										</div>
 										{% endfor %}
 									</div>
 								</div>
@@ -207,7 +141,8 @@
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 								<div class="prs_animate_btn1 prs_upcom_main_wrapper">
 									<ul>
-										<li><a href="#" class="button button--tamaya prs_upcom_main_btn" data-text="view all"><span>View All</span></a>
+										<li>
+											<a href="#" class="button button--tamaya prs_upcom_main_btn" data-text="view all"><span>View All</span></a>
 										</li>
 									</ul>
 								</div>
@@ -216,52 +151,13 @@
 					</div>
 					<div role="tabpanel" class="tab-pane fade" id="hot">
 						<div class="prs_upcom_slider_slides_wrapper">
-							<div class="owl-carousel owl-theme">
+							<div class="owl-theme">
 								<div class="item">
 									<div class="row">
 										{% for movie in released|slice:":4" %}
 											<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 prs_upcom_slide_first">
-											<div class="prs_upcom_movie_box_wrapper">
-												<div class="prs_upcom_movie_img_box">
-													<img src="{{ movie.poster.url }}" alt="movie_img" />
-													<div class="prs_upcom_movie_img_overlay"></div>
-													<div class="prs_upcom_movie_img_btn_wrapper">
-														<ul>
-															<li><a class="test-popup-link button" href="{{ movie.trailer }}">View Trailer</a>
-															</li>
-															<li><a href="{% url 'movie:single' movie_slug=movie.slug %}">View Details</a>
-															</li>
-														</ul>
-													</div>
-												</div>
-												<div class="prs_upcom_movie_content_box">
-													<div class="prs_upcom_movie_content_box_inner">
-														<h2><a href="{% url 'movie:single' movie_slug=movie.slug %}">{{ movie.title|truncatewords:2 }}</a></h2>
-														<p>
-															{% for genre in movie.genre.all %}
-																{% if forloop.counter == 3 %}
-																	{{ genre.title|truncatechars:4 }}
-																{% elif not forloop.last %}
-																	{{ genre.title|title }},
-																{% else %}
-																	{{ genre.title|title }}
-																{% endif %}
-															{% endfor %}
-														</p>
-														{% for rate in movie.rating.all %}
-															<h4>{{ rate.average|floatformat:"1" }} <i class="fa fa-star"></i></h4>
-														{% endfor %}
-													</div>
-													<div class="prs_upcom_movie_content_box_inner_icon">
-														<ul>
-															<li>
-																<a href="movie_booking.html"><i class="fa fa-star-o"></i></a>
-															</li>
-														</ul>
-													</div>
-												</div>
+												{% include 'movie/movie_card.html' with movie=movie %}
 											</div>
-										</div>
 										{% endfor %}
 									</div>
 								</div>
@@ -269,47 +165,8 @@
 									<div class="row">
 										{% for movie in released|slice:"4:8" %}
 											<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 prs_upcom_slide_first">
-											<div class="prs_upcom_movie_box_wrapper">
-												<div class="prs_upcom_movie_img_box">
-													<img src="{{ movie.poster.url }}" alt="movie_img" />
-													<div class="prs_upcom_movie_img_overlay"></div>
-													<div class="prs_upcom_movie_img_btn_wrapper">
-														<ul>
-															<li><a class="test-popup-link button" href="{{ movie.trailer }}">View Trailer</a>
-															</li>
-															<li><a href="{% url 'movie:single' movie_slug=movie.slug %}">View Details</a>
-															</li>
-														</ul>
-													</div>
-												</div>
-												<div class="prs_upcom_movie_content_box">
-													<div class="prs_upcom_movie_content_box_inner">
-														<h2><a href="{% url 'movie:single' movie_slug=movie.slug %}">{{ movie.title|truncatewords:2 }}</a></h2>
-														<p>
-															{% for genre in movie.genre.all %}
-																{% if forloop.counter == 3 %}
-																	{{ genre.title|truncatechars:4 }}
-																{% elif not forloop.last %}
-																	{{ genre.title|title }},
-																{% else %}
-																	{{ genre.title|title }}
-																{% endif %}
-															{% endfor %}
-														</p>
-														{% for rate in movie.rating.all %}
-															<h4>{{ rate.average|floatformat:"1" }} <i class="fa fa-star"></i></h4>
-														{% endfor %}
-													</div>
-													<div class="prs_upcom_movie_content_box_inner_icon">
-														<ul>
-															<li>
-																<a href="movie_booking.html"><i class="fa fa-star-o"></i></a>
-															</li>
-														</ul>
-													</div>
-												</div>
+												{% include 'movie/movie_card.html' with movie=movie %}
 											</div>
-										</div>
 										{% endfor %}
 									</div>
 								</div>
@@ -328,52 +185,13 @@
 					</div>
 					<div role="tabpanel" class="tab-pane fade" id="trand">
 						<div class="prs_upcom_slider_slides_wrapper">
-							<div class="owl-carousel owl-theme">
+							<div class="owl-theme">
 								<div class="item">
 									<div class="row">
 										{% for movie in best_in_library|slice:":4" %}
 											<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 prs_upcom_slide_first">
-											<div class="prs_upcom_movie_box_wrapper">
-												<div class="prs_upcom_movie_img_box">
-													<img src="{{ movie.poster.url }}" alt="movie_img" />
-													<div class="prs_upcom_movie_img_overlay"></div>
-													<div class="prs_upcom_movie_img_btn_wrapper">
-														<ul>
-															<li><a class="test-popup-link button" href="{{ movie.trailer }}">View Trailer</a>
-															</li>
-															<li><a href="{% url 'movie:single' movie_slug=movie.slug %}">View Details</a>
-															</li>
-														</ul>
-													</div>
-												</div>
-												<div class="prs_upcom_movie_content_box">
-													<div class="prs_upcom_movie_content_box_inner">
-														<h2><a href="{% url 'movie:single' movie_slug=movie.slug %}">{{ movie.title|truncatewords:2 }}</a></h2>
-														<p>
-															{% for genre in movie.genre.all %}
-																{% if forloop.counter == 3 %}
-																	{{ genre.title|truncatechars:4 }}
-																{% elif not forloop.last %}
-																	{{ genre.title|title }},
-																{% else %}
-																	{{ genre.title|title }}
-																{% endif %}
-															{% endfor %}
-														</p>
-														{% for rate in movie.rating.all %}
-															<h4>{{ rate.average|floatformat:"1" }} <i class="fa fa-star"></i></h4>
-														{% endfor %}
-													</div>
-													<div class="prs_upcom_movie_content_box_inner_icon">
-														<ul>
-															<li>
-																<a href="movie_booking.html"><i class="fa fa-star-o"></i></a>
-															</li>
-														</ul>
-													</div>
-												</div>
+												{% include 'movie/movie_card.html' with movie=movie %}
 											</div>
-										</div>
 										{% endfor %}
 									</div>
 								</div>
@@ -381,47 +199,8 @@
 									<div class="row">
 										{% for movie in best_in_library|slice:"4:8" %}
 											<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 prs_upcom_slide_first">
-											<div class="prs_upcom_movie_box_wrapper">
-												<div class="prs_upcom_movie_img_box">
-													<img src="{{ movie.poster.url }}" alt="movie_img" />
-													<div class="prs_upcom_movie_img_overlay"></div>
-													<div class="prs_upcom_movie_img_btn_wrapper">
-														<ul>
-															<li><a class="test-popup-link button" href="{{ movie.trailer }}">View Trailer</a>
-															</li>
-															<li><a href="{% url 'movie:single' movie_slug=movie.slug %}">View Details</a>
-															</li>
-														</ul>
-													</div>
-												</div>
-												<div class="prs_upcom_movie_content_box">
-													<div class="prs_upcom_movie_content_box_inner">
-														<h2><a href="{% url 'movie:single' movie_slug=movie.slug %}">{{ movie.title|truncatewords:2 }}</a></h2>
-														<p>
-															{% for genre in movie.genre.all %}
-																{% if forloop.counter == 3 %}
-																	{{ genre.title|truncatechars:4 }}
-																{% elif not forloop.last %}
-																	{{ genre.title|title }},
-																{% else %}
-																	{{ genre.title|title }}
-																{% endif %}
-															{% endfor %}
-														</p>
-														{% for rate in movie.rating.all %}
-															<h4>{{ rate.average|floatformat:"1" }} <i class="fa fa-star"></i></h4>
-														{% endfor %}
-													</div>
-													<div class="prs_upcom_movie_content_box_inner_icon">
-														<ul>
-															<li>
-																<a href="movie_booking.html"><i class="fa fa-star-o"></i></a>
-															</li>
-														</ul>
-													</div>
-												</div>
+												{% include 'movie/movie_card.html' with movie=movie %}
 											</div>
-										</div>
 										{% endfor %}
 									</div>
 								</div>
@@ -464,279 +243,6 @@
 	<!-- prs the latest news Start	-->
 	{% website_latest_news %}
 	<!-- prs the latest news End -->
-
-	<!-- prs theater Slider Start -->
-	<div class="prs_theater_main_slider_wrapper">
-		<div class="prs_theater_img_overlay"></div>
-		<div class="prs_theater_sec_heading_wrapper">
-			<h2>TOP MOVIES IN THEATRES</h2>
-		</div>
-		<div class="wrap-album-slider">
-			<ul class="album-slider">
-				<li class="album-slider__item">
-					<figure class="album">
-						<div class="prs_upcom_movie_box_wrapper">
-							<div class="prs_upcom_movie_img_box">
-								<img src="{% static 'images/content/up1.jpg' %}" alt="movie_img" />
-								<div class="prs_upcom_movie_img_overlay"></div>
-								<div class="prs_upcom_movie_img_btn_wrapper">
-									<ul>
-										<li><a href="#">View Trailer</a>
-										</li>
-										<li><a href="#">View Details</a>
-										</li>
-									</ul>
-								</div>
-							</div>
-							<div class="prs_upcom_movie_content_box">
-								<div class="prs_upcom_movie_content_box_inner">
-									<h2><a href="#">Busting Car</a></h2>
-									<p>Drama , Acation</p>	<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star-o"></i>
-									<i class="fa fa-star-o"></i>
-								</div>
-								<div class="prs_upcom_movie_content_box_inner_icon">
-									<ul>
-										<li><a href="movie_booking.html"><i class="flaticon-cart-of-ecommerce"></i></a>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<!-- End album body -->
-					</figure>
-					<!-- End album -->
-				</li>
-				<!-- End album slider item -->
-				<li class="album-slider__item">
-					<figure class="album">
-						<div class="prs_upcom_movie_box_wrapper">
-							<div class="prs_upcom_movie_img_box">
-								<img src="{% static 'images/content/up2.jpg' %}" alt="movie_img" />
-								<div class="prs_upcom_movie_img_overlay"></div>
-								<div class="prs_upcom_movie_img_btn_wrapper">
-									<ul>
-										<li><a href="#">View Trailer</a>
-										</li>
-										<li><a href="#">View Details</a>
-										</li>
-									</ul>
-								</div>
-							</div>
-							<div class="prs_upcom_movie_content_box">
-								<div class="prs_upcom_movie_content_box_inner">
-									<h2><a href="#">Busting Car</a></h2>
-									<p>Drama , Acation</p>	<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star-o"></i>
-									<i class="fa fa-star-o"></i>
-								</div>
-								<div class="prs_upcom_movie_content_box_inner_icon">
-									<ul>
-										<li><a href="movie_booking.html"><i class="flaticon-cart-of-ecommerce"></i></a>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<!-- End album body -->
-					</figure>
-					<!-- End album -->
-				</li>
-				<!-- End album slider item -->
-				<li class="album-slider__item">
-					<figure class="album">
-						<div class="prs_upcom_movie_box_wrapper">
-							<div class="prs_upcom_movie_img_box">
-								<img src="{% static 'images/content/up3.jpg' %}" alt="movie_img" />
-								<div class="prs_upcom_movie_img_overlay"></div>
-								<div class="prs_upcom_movie_img_btn_wrapper">
-									<ul>
-										<li><a href="#">View Trailer</a>
-										</li>
-										<li><a href="#">View Details</a>
-										</li>
-									</ul>
-								</div>
-							</div>
-							<div class="prs_upcom_movie_content_box">
-								<div class="prs_upcom_movie_content_box_inner">
-									<h2><a href="#">Busting Car</a></h2>
-									<p>Drama , Acation</p>	<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star-o"></i>
-									<i class="fa fa-star-o"></i>
-								</div>
-								<div class="prs_upcom_movie_content_box_inner_icon">
-									<ul>
-										<li><a href="movie_booking.html"><i class="flaticon-cart-of-ecommerce"></i></a>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<!-- End album body -->
-					</figure>
-					<!-- End album -->
-				</li>
-				<!-- End album slider item -->
-				<li class="album-slider__item">
-					<figure class="album">
-						<div class="prs_upcom_movie_box_wrapper">
-							<div class="prs_upcom_movie_img_box">
-								<img src="{% static 'images/content/up4.jpg' %}" alt="movie_img" />
-								<div class="prs_upcom_movie_img_overlay"></div>
-								<div class="prs_upcom_movie_img_btn_wrapper">
-									<ul>
-										<li><a href="#">View Trailer</a>
-										</li>
-										<li><a href="#">View Details</a>
-										</li>
-									</ul>
-								</div>
-							</div>
-							<div class="prs_upcom_movie_content_box">
-								<div class="prs_upcom_movie_content_box_inner">
-									<h2><a href="#">Busting Car</a></h2>
-									<p>Drama , Acation</p>	<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star-o"></i>
-									<i class="fa fa-star-o"></i>
-								</div>
-								<div class="prs_upcom_movie_content_box_inner_icon">
-									<ul>
-										<li><a href="movie_booking.html"><i class="flaticon-cart-of-ecommerce"></i></a>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<!-- End album body -->
-					</figure>
-					<!-- End album -->
-				</li>
-				<!-- End album slider item -->
-				<li class="album-slider__item">
-					<figure class="album">
-						<div class="prs_upcom_movie_box_wrapper">
-							<div class="prs_upcom_movie_img_box">
-								<img src="{% static 'images/content/up5.jpg' %}" alt="movie_img" />
-								<div class="prs_upcom_movie_img_overlay"></div>
-								<div class="prs_upcom_movie_img_btn_wrapper">
-									<ul>
-										<li><a href="#">View Trailer</a>
-										</li>
-										<li><a href="#">View Details</a>
-										</li>
-									</ul>
-								</div>
-							</div>
-							<div class="prs_upcom_movie_content_box">
-								<div class="prs_upcom_movie_content_box_inner">
-									<h2><a href="#">Busting Car</a></h2>
-									<p>Drama , Acation</p>	<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star-o"></i>
-									<i class="fa fa-star-o"></i>
-								</div>
-								<div class="prs_upcom_movie_content_box_inner_icon">
-									<ul>
-										<li><a href="movie_booking.html"><i class="flaticon-cart-of-ecommerce"></i></a>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<!-- End album body -->
-					</figure>
-					<!-- End album -->
-				</li>
-				<!-- End album slider item -->
-				<li class="album-slider__item">
-					<figure class="album">
-						<div class="prs_upcom_movie_box_wrapper">
-							<div class="prs_upcom_movie_img_box">
-								<img src="{% static 'images/content/up6.jpg' %}" alt="movie_img" />
-								<div class="prs_upcom_movie_img_overlay"></div>
-								<div class="prs_upcom_movie_img_btn_wrapper">
-									<ul>
-										<li><a href="#">View Trailer</a>
-										</li>
-										<li><a href="#">View Details</a>
-										</li>
-									</ul>
-								</div>
-							</div>
-							<div class="prs_upcom_movie_content_box">
-								<div class="prs_upcom_movie_content_box_inner">
-									<h2><a href="#">Busting Car</a></h2>
-									<p>Drama , Acation</p>	<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star-o"></i>
-									<i class="fa fa-star-o"></i>
-								</div>
-								<div class="prs_upcom_movie_content_box_inner_icon">
-									<ul>
-										<li><a href="movie_booking.html"><i class="flaticon-cart-of-ecommerce"></i></a>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<!-- End album body -->
-					</figure>
-					<!-- End album -->
-				</li>
-				<!-- End album slider item -->
-				<li class="album-slider__item">
-					<figure class="album">
-						<div class="prs_upcom_movie_box_wrapper">
-							<div class="prs_upcom_movie_img_box">
-								<img src="{% static 'images/content/up7.jpg' %}" alt="movie_img" />
-								<div class="prs_upcom_movie_img_overlay"></div>
-								<div class="prs_upcom_movie_img_btn_wrapper">
-									<ul>
-										<li><a href="#">View Trailer</a>
-										</li>
-										<li><a href="#">View Details</a>
-										</li>
-									</ul>
-								</div>
-							</div>
-							<div class="prs_upcom_movie_content_box">
-								<div class="prs_upcom_movie_content_box_inner">
-									<h2><a href="#">Busting Car</a></h2>
-									<p>Drama , Acation</p>	<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star-o"></i>
-									<i class="fa fa-star-o"></i>
-								</div>
-								<div class="prs_upcom_movie_content_box_inner_icon">
-									<ul>
-										<li><a href="movie_booking.html"><i class="flaticon-cart-of-ecommerce"></i></a>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<!-- End album body -->
-					</figure>
-					<!-- End album -->
-				</li>
-				<!-- End album slider item -->
-			</ul>
-			<!-- End slider -->
-		</div>
-	</div>
-	<!-- prs theater Slider End -->
 
 	<!-- prs videos&photos slider Start -->
 	<div class="prs_vp_main_section_wrapper">

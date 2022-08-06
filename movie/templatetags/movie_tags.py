@@ -29,7 +29,7 @@ def movie_in_theater_slider():
 
     movies = Movie.objects \
         .prefetch_related('genre', 'rating') \
-        .filter(rating__average__gte=7.0) \
+        .filter(rating__average__gte=6.0) \
         .filter(release_date__range=(last_tree_month, today)) \
         .order_by('-rating__average')[:7]
 

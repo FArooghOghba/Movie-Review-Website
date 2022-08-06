@@ -78,7 +78,9 @@
 									<div id="grid" class="tab-pane fade in active">
 										<div class="row">
 											{% for movie in all_pages %}
-												{% include 'movie/movie_card.html' with movie=movie %}
+												<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 prs_upcom_slide_first">
+													{% include 'movie/movie_card.html' with movie=movie %}
+												</div>
 											{% empty %}
 												<h4>Sorry we don't have it in our database.</h4>
 											{% endfor %}

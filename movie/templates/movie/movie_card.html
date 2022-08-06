@@ -3,83 +3,86 @@
 {% load ratings %}
 {% load movie_tags %}
 
-<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 prs_upcom_slide_first">
-    <div class="prs_upcom_movie_box_wrapper prs_mcc_movie_box_wrapper">
-        <div class="prs_upcom_movie_img_box">
-            <img src="{{ movie.poster.url }}" alt="movie_img"/>
-            <div class="prs_upcom_movie_img_overlay"></div>
-            <div class="prs_upcom_movie_img_btn_wrapper">
-                <ul>
-                    <li>
-                        <a id="trailer" class="test-popup-link button" href="{{ movie.trailer }}">
-                            View Trailer
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{% url 'movie:single' movie_slug=movie.slug %}">
-                            View Details
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="prs_upcom_movie_content_box">
-            <div class="prs_upcom_movie_content_box_inner">
-                <h2>
-                    <a href="{% url 'movie:single' movie_slug=movie.slug %}">
-                        {{ movie.title|truncatewords:2 }}
+<div class="prs_upcom_movie_box_wrapper prs_mcc_movie_box_wrapper">
+    <div class="prs_upcom_movie_img_box">
+        <img src="{{ movie.poster.url }}" alt="movie_img"/>
+        <div class="prs_upcom_movie_img_overlay"></div>
+        <div class="prs_upcom_movie_img_btn_wrapper">
+            <ul>
+                <li>
+                    <a id="trailer" class="test-popup-link button" href="{{ movie.trailer }}">
+                        View Trailer
                     </a>
-                </h2>
-                <p>
-                    {% for genre in movie.genre.all %}
-                        {% if forloop.counter == 3 %}
-                            {{ genre.title|truncatechars:4 }}
-                        {% elif not forloop.last %}
-                            {{ genre.title|title }},
-                        {% else %}
-                            {{ genre.title|title }}
-                        {% endif %}
-                    {% endfor %}
-                </p>
-                {% for rate in movie.rating.all %}
-                    {% if movie.release_date|upcoming %}
-                        <h4>Not Released Yet</h4>
-                    {% else %}
-                        <h4>
-                            {{ rate.average|floatformat:"1" }}
-                            <i class="fa fa-star"></i>
-                        </h4>
-                    {% endif %}
-                {% endfor %}
-            </div>
-            <div class="prs_upcom_movie_content_box_inner_icon">
-                <ul>
-
-                    <li>
-                        <!-- Button trigger modal -->
-                        <a role="button" data-toggle="modal" data-target="#staticBackdrop{{ movie.id }}">
-                            <i class="fa fa-star-o"></i>
-                        </a>
-                    </li>
-
-                </ul>
-            </div>
+                </li>
+                <li>
+                    <a href="{% url 'movie:single' movie_slug=movie.slug %}">
+                        View Details
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
-    <!-- Modal -->
-    <div class="modal fade" id="staticBackdrop{{ movie.id }}" role="dialog">
-        <div class="modal-dialog modal-dialog-centered">
-           <div class="modal-content">
-               <div class="modal-header">
-                  <h4 class="modal-title" id="staticBackdropLabel">{{ movie.title }}</h4>
-               </div>
-               <div class="modal-body">
-                   {% ratings movie template_name='movie/movie_list_modal_rating.html' %}
-               </div>
-               <div class="modal-footer">
-                 <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-               </div>
-           </div>
+    <div class="prs_upcom_movie_content_box">
+        <div class="prs_upcom_movie_content_box_inner">
+            <h2>
+                <a href="{% url 'movie:single' movie_slug=movie.slug %}">
+                    {{ movie.title|truncatewords:2 }}
+                </a>
+            </h2>
+            <p>
+                {% for genre in movie.genre.all %}
+                    {% if forloop.counter == 3 %}
+                        {{ genre.title|truncatechars:4 }}
+                    {% elif not forloop.last %}
+                        {{ genre.title|title }},
+                    {% else %}
+                        {{ genre.title|title }}
+                    {% endif %}
+                {% endfor %}
+            </p>
+            {% for rate in movie.rating.all %}
+                {% if movie.release_date|upcoming %}
+                    <h5>Not Released Yet</h5>
+                {% else %}
+                    <h4>
+                        {{ rate.average|floatformat:"1" }}
+                        <i class="fa fa-star"></i>
+                    </h4>
+                {% endif %}
+            {% endfor %}
         </div>
+        <div class="prs_upcom_movie_content_box_inner_icon">
+            <ul>
+
+                <li>
+                    <!-- Button trigger modal -->
+                    <a role="button" data-toggle="modal" data-target="#staticBackdrop{{ movie.id }}">
+                        <i class="fa fa-star-o"></i>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop{{ movie.id }}" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+       <div class="modal-content">
+           <div class="modal-header">
+              <h4 class="modal-title" id="staticBackdropLabel{{ movie.id }}">{{ movie.title }}</h4>
+           </div>
+           <div class="modal-body">
+               {% if movie.release_date|upcoming %}
+                    <h5 style="color: red;">The movie has not been released yet</h5>
+               {% else %}
+                    {% ratings movie template_name='movie/movie_list_modal_rating.html' %}
+                {% endif %}
+           </div>
+           <div class="modal-footer">
+             <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+           </div>
+       </div>
     </div>
 </div>
