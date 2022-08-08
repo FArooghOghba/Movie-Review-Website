@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
 
+from taggit.managers import TaggableManager
 
 # Create your models here.
 
@@ -27,7 +28,7 @@ class Post(models.Model):
     content = models.TextField()
     categories = models.ManyToManyField(Category)
     like = models.ManyToManyField(User, blank=True, related_name='collected_likes')
-    # tag
+    tag = TaggableManager()
     # login require
     status = models.BooleanField(default=False)
     published_date = models.DateTimeField(null=True, blank=True)

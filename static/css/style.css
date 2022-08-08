@@ -6371,6 +6371,40 @@ body.active #mobile-nav {
 	float:left;
 	width:100%;
 }
+.tag_cloud{
+    float:left;
+	width:100%;
+	margin-top:60px;
+	-webkit-border-top-left-radius: 10px;
+    -moz-border-top-left-radius: 10px;
+    border-top-left-radius: 10px;
+    -webkit-border-bottom-left-radius: 10px;
+    -moz-border-bottom-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    min-height:120px;
+	background:#ffffff;
+	padding:30px;
+	    -webkit-border-top-right-radius: 10px;
+    -moz-border-top-right-radius: 10px;
+    border-top-right-radius: 10px;
+    -webkit-border-bottom-right-radius: 10px;
+    -moz-border-bottom-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.tag_cloud h4{
+	font-size:20px;
+	color:#000000;
+	text-transform:uppercase;
+	font-weight:bold;
+	margin-top:10px;
+}
+.tag_cloud p{
+	color:#707070;
+	margin-top:15px;
+}
+.tag_cloud a:hover{
+    color:#ff4444;
+}
 .prs_bs_about_admin_main_wrapper{
 	float:left;
 	width:100%;

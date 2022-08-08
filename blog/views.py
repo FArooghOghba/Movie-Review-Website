@@ -9,13 +9,16 @@ from .forms import CommentForm
 
 # Create your views here.
 
-def blog_list_view(request):
-    blogs = Post.objects.filter(
+def blog_list_view(request, **kwargs):
+    all_post = Post.objects.filter(
         published_date__lte=timezone.now(),
         status=True
     )
 
-    paginator = Paginator(blogs, 3)
+    if kwargs.get('tag_slug') is not None:
+        all_post = all_post.filter(tag__slug=kwargs['tag_slug'])
+
+    paginator = Paginator(all_post, 3)
     page_number = request.GET.get('page')
     try:
         all_post_pages = paginator.get_page(page_number)

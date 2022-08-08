@@ -47,6 +47,7 @@ INSTALLED_APPS = [
 
     'debug_toolbar',
     'star_ratings',
+    'taggit',
     'robots',
 
     'website.apps.WebsiteConfig',
