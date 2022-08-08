@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'django.contrib.sites',
+
     'debug_toolbar',
     'star_ratings',
 
@@ -162,3 +164,8 @@ INTERNAL_IPS = [
 STAR_RATINGS_RERATE_SAME_DELETE = True
 STAR_RATINGS_RANGE = 10
 STAR_RATINGS_STAR_HEIGHT = 20
+
+
+# Site id
+
+SITE_ID = 2
