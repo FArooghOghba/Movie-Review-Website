@@ -28,8 +28,8 @@ class Post(models.Model):
     categories = models.ManyToManyField(Category)
     like = models.ManyToManyField(User, blank=True, related_name='collected_likes')
     # tag
-    # status
     # login require
+    status = models.BooleanField(default=False)
     published_date = models.DateTimeField(null=True, blank=True)
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)

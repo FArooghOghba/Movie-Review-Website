@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Q
+from django.utils import timezone
 
 from .models import Post, Comment
 from .forms import CommentForm
@@ -9,7 +10,10 @@ from .forms import CommentForm
 # Create your views here.
 
 def blog_list_view(request):
-    blogs = Post.objects.all()
+    blogs = Post.objects.filter(
+        publish_date__lte=timezone.now(),
+        status=True
+    )
 
     paginator = Paginator(blogs, 3)
     page_number = request.GET.get('page')
@@ -25,7 +29,12 @@ def blog_list_view(request):
 
 
 def blog_single_view(request, post_slug):
-    post = get_object_or_404(Post, slug=post_slug)
+    post = get_object_or_404(
+        Post,
+        slug=post_slug,
+        publish_date__lte=timezone.now(),
+        status=True
+    )
 
     if request.method == 'POST':
         comment_form = CommentForm(data=request.POST)
