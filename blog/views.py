@@ -17,6 +17,8 @@ def blog_list_view(request, **kwargs):
 
     if kwargs.get('tag_slug') is not None:
         all_post = all_post.filter(tag__slug=kwargs['tag_slug'])
+    if kwargs.get('cat_slug') is not None:
+        all_post = all_post.filter(categories__slug=kwargs['cat_slug'])
 
     paginator = Paginator(all_post, 3)
     page_number = request.GET.get('page')

@@ -5,13 +5,13 @@
 
         <li>
             <i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;
-            <a href="#">All Post <span>{{ all_post_count }}</span></a>
+            <a href="{% url 'blog:list' %}">All Post <span>{{ all_post_count }}</span></a>
         </li>
 
         {% for cat in categories_count%}
             <li>
                 <i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;
-                <a href="#">{{ cat.title|title }} <span>{{ cat.cat_count }}</span></a>
+                <a href="{% url 'blog:category' cat_slug=cat.slug %}">{{ cat.title|title }} <span>{{ cat.cat_count }}</span></a>
             </li>
         {% endfor %}
 
