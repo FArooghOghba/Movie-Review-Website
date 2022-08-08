@@ -93,44 +93,8 @@
 										<div class="row">
 											{% for movie in all_pages %}
 												<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-												<div class="prs_mcc_list_movie_main_wrapper">
-													<div class="prs_mcc_list_movie_img_wrapper">
-														<img src="{{ movie.poster.url }}" alt="categoty_img">
-													</div>
-													<div class="prs_mcc_list_movie_img_cont_wrapper">
-
-														<div class="prs_mcc_list_left_cont_wrapper">
-															<h2>{{ movie.title|truncatewords:5 }}</h2>
-
-															<p>
-																{% for genre in movie.genre.all %}
-																	{{ genre.title|title }} {% if not forloop.last %},{% endif %}
-																{% endfor %}
-																&nbsp;&nbsp;
-																{% for rate in movie.rating.all %}
-																	{{ rate.average|floatformat:"1" }} <i class="fa fa-star"></i>
-																{% endfor %}
-															</p>
-
-															<h4>Movie Director - Jhon Doe</h4>
-														</div>
-
-														<div class="prs_mcc_list_right_cont_wrapper">
-															<a href="#"><i class="fa fa-star-o"></i></a>
-														</div>
-
-														<div class="prs_mcc_list_bottom_cont_wrapper">
-															<p>{{ movie.synopsis|truncatewords:25 }}</p>
-															<ul>
-																<li><a class="test-popup-link button" href="{{ movie.trailer }}">View Trailer</a>
-																</li>
-																<li><a href="{% url 'movie:single' movie_slug=movie.slug %}">View Details</a>
-																</li>
-															</ul>
-														</div>
-													</div>
+													{% include 'movie/movie_card2_with_detail.html' with movie=movie %}
 												</div>
-											</div>
 											{% empty %}
 												<h4>Sorry we don't have it in out database.</h4>
 											{% endfor %}
