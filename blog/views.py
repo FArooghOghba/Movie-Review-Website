@@ -11,7 +11,7 @@ from .forms import CommentForm
 
 def blog_list_view(request):
     blogs = Post.objects.filter(
-        publish_date__lte=timezone.now(),
+        published_date__lte=timezone.now(),
         status=True
     )
 
@@ -32,7 +32,7 @@ def blog_single_view(request, post_slug):
     post = get_object_or_404(
         Post,
         slug=post_slug,
-        publish_date__lte=timezone.now(),
+        published_date__lte=timezone.now(),
         status=True
     )
 

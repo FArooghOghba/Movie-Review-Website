@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'django.contrib.sites',
+    'django.contrib.sitemaps',
 
     'debug_toolbar',
     'star_ratings',

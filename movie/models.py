@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.contenttypes.fields import GenericRelation
+from django.urls import reverse
 
 from star_ratings.models import Rating
 
@@ -33,6 +34,9 @@ class Movie(models.Model):
 
     class Meta:
         ordering = ['-release_date']
+
+    def get_absolute_url(self):
+        return reverse('movie:single', kwargs={'movie_slug': self.slug})
 
     def __str__(self):
         return self.title
