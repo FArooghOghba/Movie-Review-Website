@@ -95,11 +95,12 @@ def blog_like_post_view(request, post_id):
 
 def blog_search_view(request):
     if request.method == 'GET':
-        if search := request.GET.get('search'):
+        if search := request.GET.get('s'):
             posts = Post.objects.filter(
                 Q(title__icontains=search) |
-                Q(content__icontains=search)
-            )
+                Q(content__icontains=search) |
+                Q(tag__name__icontains=search)
+            ).distinct()
 
             paginator = Paginator(posts, 3)
             page_number = request.GET.get('page')

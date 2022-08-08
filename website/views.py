@@ -45,8 +45,9 @@ def search_view(request):
             if category == 'blog':
                 query_set = Post.objects.filter(
                     Q(title__icontains=search) |
-                    Q(content__icontains=search)
-                )
+                    Q(content__icontains=search) |
+                    Q(tag__name__icontains=search)
+                ).distinct()
                 template = 'blog/blog_list.html'
             elif category == 'movie':
                 query_set = Movie.objects.filter(
@@ -59,8 +60,9 @@ def search_view(request):
                 )
                 posts = Post.objects.filter(
                     Q(title__icontains=search) |
-                    Q(content__icontains=search)
-                )
+                    Q(content__icontains=search) |
+                    Q(tag__name__icontains=search)
+                ).distinct()
                 query_set = list(chain(movies, posts))
                 template = 'all_category_search.html'
             else:
