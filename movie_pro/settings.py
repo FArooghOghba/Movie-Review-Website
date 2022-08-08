@@ -47,6 +47,7 @@ INSTALLED_APPS = [
 
     'debug_toolbar',
     'star_ratings',
+    'robots',
 
     'website.apps.WebsiteConfig',
     'movie.apps.MovieConfig',

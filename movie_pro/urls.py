@@ -39,7 +39,8 @@ urlpatterns = [
     path('__debug__/', include('debug_toolbar.urls')),
     path('ratings/', include('star_ratings.urls', namespace='ratings')),
 
-    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap')
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+    path('robots.txt', include('robots.urls')),
 ]
 
 # With this urlpatterns, Django's development server is capable of serving media files.
