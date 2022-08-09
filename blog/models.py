@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 
 from taggit.managers import TaggableManager
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 
@@ -25,7 +26,7 @@ class Post(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255, unique=True)
     image = models.ImageField(upload_to='blog_post/', default='blog_post/default_image_blog.jpg')
-    content = models.TextField()
+    content = RichTextField()
     categories = models.ManyToManyField(Category)
     like = models.ManyToManyField(User, blank=True, related_name='collected_likes')
     tag = TaggableManager()

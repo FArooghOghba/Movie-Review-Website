@@ -55,7 +55,7 @@
                                         </h2>
                                         <h3>{{ post.published_date|date:'d b Y' }}</h3>
                                         <p>
-                                            {{ post.content|truncatewords:15 }}
+                                            {{ post.content|safe|truncatewords:15 }}
                                         </p>
                                         <ul>
                                             <li>
