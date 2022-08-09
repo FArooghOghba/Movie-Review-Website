@@ -9,6 +9,8 @@ from itertools import chain
 from movie.models import Movie
 from blog.models import Post
 
+from website.forms import ContactForm
+
 
 # Create your views here.
 
@@ -34,7 +36,18 @@ def about_view(request):
 
 
 def contact_view(request):
-    return render(request, template_name='website/contact.html')
+    if request.method == 'POST':
+        contact_form = ContactForm(data=request.POST)
+        if contact_form.is_valid():
+            contact_form.save()
+
+            print(contact_form.errors.as_data())
+        else:
+            print(contact_form.errors.as_data())
+
+    contact_form = ContactForm()
+    context = {'contact_form': contact_form}
+    return render(request, template_name='website/contact.html', context=context)
 
 
 def search_view(request):

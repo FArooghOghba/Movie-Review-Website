@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'taggit',
     'robots',
     'ckeditor',
+    'captcha',
 
     'website.apps.WebsiteConfig',
     'movie.apps.MovieConfig',
@@ -240,3 +241,9 @@ CKEDITOR_CONFIGS = {
         ]),
     }
 }
+
+
+# Django Simple Captcha Configuration
+
+CAPTCHA_FONT_SIZE = 36
+CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.math_challenge'
