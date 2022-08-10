@@ -6293,7 +6293,7 @@ body.active #mobile-nav {
 	left:0;
 	z-index:1;
 }
-.prs_blog_right_sub_btn_wrapper li a{
+.prs_blog_right_sub_btn_wrapper li button{
 	float:left;
     width: 100%;
     height: 50px;
@@ -6312,7 +6312,7 @@ body.active #mobile-nav {
     -moz-transition: all 0.5s;
     transition: all 0.5s;
 }
-.prs_blog_right_sub_btn_wrapper li a:hover{
+.prs_blog_right_sub_btn_wrapper li button:hover{
 	background: transparent;
     border: 1px solid #ff4444;
 	color:#ff4444;

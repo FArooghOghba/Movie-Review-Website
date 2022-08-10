@@ -1,0 +1,16 @@
+
+
+
+<div class="prs_blog_right_sub_btn_wrapper">
+    <h2>Subscribe</h2>
+    <form method="post" action="{% url 'website:newsletter' %}">
+        {% csrf_token %}
+        <input type="hidden" name="page_url" value="{{ request.build_absolute_uri }}">
+        <input name="email" type="email" placeholder="Your email id">
+        <ul>
+            <li>
+                <button type="submit">Subscribe</button>
+            </li>
+        </ul>
+    </form>
+</div>
