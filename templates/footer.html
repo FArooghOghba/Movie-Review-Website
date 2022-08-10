@@ -60,10 +60,14 @@
 					</div>
 				</div>
 				<div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
-					<div class="prs_newsletter_field">
-						<input type="text" placeholder="Enter Your Email">
-						<button type="submit">Submit</button>
-					</div>
+					<form method="post" action="{% url 'website:newsletter' %}">
+						{% csrf_token %}
+						<div class="prs_newsletter_field">
+							<input type="hidden" name="page_url" value="{{ request.build_absolute_uri }}">
+							<input name="email" type="email" placeholder="Enter Your Email">
+							<button type="submit">Submit</button>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>

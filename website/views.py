@@ -9,7 +9,7 @@ from itertools import chain
 from movie.models import Movie
 from blog.models import Post
 
-from website.forms import ContactForm
+from website.forms import ContactForm, NewsletterForm
 
 
 # Create your views here.
@@ -94,3 +94,20 @@ def search_view(request):
             return render(request, template_name=template, context=context)
 
     return redirect('website:home_page')
+
+
+def newsletter_view(request):
+    page_url = ''
+
+    if request.method == 'POST':
+        page_url = request.POST.get('page_url')
+
+        newsletter_form = NewsletterForm(data=request.POST)
+        if newsletter_form.is_valid():
+            newsletter_form.save()
+            print(newsletter_form.errors.as_data())
+        else:
+            print(newsletter_form.errors.as_data())
+
+    return redirect(page_url)
+

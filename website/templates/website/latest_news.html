@@ -23,7 +23,11 @@
 <!--                        </div>-->
                         <div class="prs_prs_webseri_video_sec_icon_cont_wrapper">
                             <p>{{ first_post.published_date|date:'d b Y' }}</p>
-                            <h2>{{ first_post.title|truncatewords:3 }}</h2>
+                            <a href="{% url 'blog:single' post_slug=first_post.slug %}">
+                                <h2>
+                                    {{ first_post.title|truncatewords:3 }}
+                                </h2>
+                            </a>
                             <ul>
                                 <li>
                                     <i class="fa fa-thumbs-up"></i>&nbsp;&nbsp;
