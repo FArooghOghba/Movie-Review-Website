@@ -35,6 +35,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'multi_captcha_admin',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -245,5 +247,13 @@ CKEDITOR_CONFIGS = {
 
 # Django Simple Captcha Configuration
 
-CAPTCHA_FONT_SIZE = 36
+CAPTCHA_FONT_SIZE = 30
+CAPTCHA_LETTER_ROTATION = (-45, 45)
 CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.math_challenge'
+
+
+# Multi Captcha Admin Configuration
+
+MULTI_CAPTCHA_ADMIN = {
+    'engine': 'simple-captcha',
+}
