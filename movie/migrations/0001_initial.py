@@ -19,7 +19,6 @@ class Migration(migrations.Migration):
                 ('synopsis', models.TextField()),
                 ('poster', models.ImageField(upload_to='movie_poster/')),
                 ('trailer', models.URLField()),
-                ('rating', models.IntegerField(default=0)),
                 ('runtime', models.DurationField()),
                 ('votes', models.IntegerField(default=0)),
                 ('release_date', models.DateField()),
