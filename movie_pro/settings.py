@@ -47,6 +47,9 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.sitemaps',
 
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     'debug_toolbar',
     'star_ratings',
     'taggit',
@@ -153,10 +156,12 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'  # MEDIA_URL is the URL that will serve the media files.
 MEDIA_ROOT = BASE_DIR / 'media'  # MEDIA_ROOT is the path to the root directory where the files are getting stored.
 
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 
 # Django Debug Toolbar Configuration
 
@@ -165,6 +170,7 @@ INTERNAL_IPS = [
     "127.0.0.1",
     # ...
 ]
+
 
 # Django Rating Star
 
@@ -176,6 +182,24 @@ STAR_RATINGS_STAR_HEIGHT = 20
 # Site id
 
 SITE_ID = 2
+
+
+# Django-allauth Configuration
+
+AUTHENTICATION_BACKENDS = [
+    # Needed to log in by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+LOGIN_REDIRECT_URL = '/'
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+ACCOUNT_EMAIL_VERIFICATION = "none"
+ACCOUNT_LOGOUT_ON_GET = True
+ACCOUNT_EMAIL_REQUIRED = True
+
 
 # Ckeditor Configs
 

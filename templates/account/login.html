@@ -1,0 +1,58 @@
+<div class="modal fade st_pop_form_wrapper" id="myModal" role="dialog">
+
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <div class="st_pop_form_heading_wrapper float_left">
+                <h3>Log in</h3>
+            </div>
+
+            <form action="{% url 'account_login' %}" method="post">
+                {% csrf_token %}
+
+                <div class="st_profile_input float_left">
+                    <label>Email / Username</label>
+                    <input name="login" type="text">
+                </div>
+
+                <div class="st_profile__pass_input st_profile__pass_input_pop float_left">
+                    <input name="password" type="password" placeholder="Password">
+                </div>
+
+                <div class="st_form_pop_fp float_left">
+                    <h3>
+                        <a href="#" data-toggle="modal" data-target="#myModa2" target="_blank">
+                            Forgot Password?
+                        </a>
+                    </h3>
+                </div>
+
+                {% if redirect_field_value %}
+                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                {% endif %}
+
+                <div class="st_form_pop_login_btn float_left">
+                    <button class="st_form_pop_login_btn float_left" type="submit">LOGIN</button>
+                </div>
+            </form>
+
+            <!--				<div class="st_form_pop_or_btn float_left">-->
+            <!--					<h4>or</h4>-->
+            <!--				</div>-->
+            <!--				<div class="st_form_pop_facebook_btn float_left">-->
+            <!--					<a href="#"> Connect with Facebook</a>-->
+            <!--				</div>-->
+            <!--				<div class="st_form_pop_gmail_btn float_left">-->
+            <!--					<a href="#"> Connect with Google</a>-->
+            <!--				</div>-->
+            <div class="st_form_pop_signin_btn float_left">
+                <h4>Don’t have an account?
+                    <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#myModa3" target="_blank">
+                        Sign Up
+                    </a>
+                </h4>
+                <h5>I agree to the <a href="#">Terms & Conditions</a> & <a href="#">Privacy Policy</a></h5>
+            </div>
+        </div>
+    </div>
+</div>
