@@ -47,9 +47,8 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.sitemaps',
 
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
+    'bootstrap_modal_forms',
+    'widget_tweaks',
     'debug_toolbar',
     'star_ratings',
     'taggit',
@@ -59,7 +58,8 @@ INSTALLED_APPS = [
 
     'website.apps.WebsiteConfig',
     'movie.apps.MovieConfig',
-    'blog.apps.BlogConfig'
+    'blog.apps.BlogConfig',
+    'account.apps.AccountConfig'
 ]
 
 MIDDLEWARE = [
@@ -182,23 +182,6 @@ STAR_RATINGS_STAR_HEIGHT = 20
 # Site id
 
 SITE_ID = 2
-
-
-# Django-allauth Configuration
-
-AUTHENTICATION_BACKENDS = [
-    # Needed to log in by username in Django admin, regardless of `allauth`
-    'django.contrib.auth.backends.ModelBackend',
-
-    # `allauth` specific authentication methods, such as login by e-mail
-    'allauth.account.auth_backends.AuthenticationBackend',
-]
-
-LOGIN_REDIRECT_URL = '/'
-ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
-ACCOUNT_EMAIL_VERIFICATION = "none"
-ACCOUNT_LOGOUT_ON_GET = True
-ACCOUNT_EMAIL_REQUIRED = True
 
 
 # Ckeditor Configs
