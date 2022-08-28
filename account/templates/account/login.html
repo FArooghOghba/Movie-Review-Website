@@ -1,7 +1,7 @@
 
 {% load widget_tweaks %}
 
-<form action="" method="post">
+<form action="" method="post" novalidate>
     {% csrf_token %}
 
     <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -14,23 +14,27 @@
 
         <div class="{% if form.non_field_errors %}invalid{% endif %} mb-2">
             {% for error in form.non_field_errors %}
-                {{ error }}
+                <p class="help-block" style="color:red;">{{ error }}</p>
             {% endfor %}
         </div>
 
         <div class="st_profile_input float_left">
             <label for="{{ form.username.id_for_label }}">Email / Username</label>
             {{ form.username }}
+            <div class="{% if form.username.errors %}invalid{% endif %}">
             {% for error in form.username.errors %}
-                {{ error }}
+                <p class="help-block" style="color:red;">{{ error }}</p>
             {% endfor %}
+            </div>
         </div>
 
         <div class="st_profile__pass_input st_profile__pass_input_pop float_left">
             {% render_field form.password placeholder=form.password.label %}
+            <div class="{% if form.password.errors %}invalid{% endif %}">
             {% for error in form.password.errors %}
-                {{ error }}
+                <p class="help-block" style="color:red;">{{ error }}</p>
             {% endfor %}
+            </div>
         </div>
 
 
