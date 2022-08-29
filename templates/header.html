@@ -86,9 +86,15 @@
                     <div class="prs_animate_btn1">
                         <ul>
                             <li>
-                                <a href="#" class="button button--tamaya" data-text="sign up" data-toggle="" data-target="#myModa3">
+
+                                <button id="signup-btn"
+                                        type="button"
+                                        name="button"
+                                        class="button button--tamaya"
+                                        data-text="sign up">
                                     <span>sign up</span>
-                                </a>
+                                </button>
+
                             </li>
                         </ul>
                     </div>
@@ -97,14 +103,12 @@
                     <div class="prs_animate_btn1">
                         <ul>
                             <li>
-                                <div class="modal fade st_pop_form_wrapper" tabindex="-1" id="modal" role="dialog">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content"></div>
-                                    </div>
-                                </div>
 
-                                <button id="login-btn" type="button" name="button" class="button button--tamaya"
-                                   data-text="log in">
+                                <button id="login-btn"
+                                        type="button"
+                                        name="button"
+                                        class="button button--tamaya"
+                                        data-text="log in">
                                     <span>Log in</span>
                                 </button>
 
@@ -138,6 +142,11 @@
 
 <!-- prs navigation End -->
 
+<div class="modal fade st_pop_form_wrapper" tabindex="-1" id="myModal" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">dfgdss</div>
+    </div>
+</div>
 
 <!-- st login wrapper Start -->
 
@@ -146,6 +155,11 @@
     // Log in button
     $("#login-btn").modalForm({
         formURL: "{% url 'account:login' %}",
+        modalID: "#myModal",
+    });
+    $("#signup-btn").modalForm({
+        formURL: "{% url 'account:signup' %}",
+        modalID: "#myModal",
     });
   });
 </script>

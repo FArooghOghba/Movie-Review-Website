@@ -60,13 +60,25 @@
 
      <div class="st_form_pop_signin_btn float_left">
          <h4>Don’t have an account?
-             <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#myModa3" target="_blank">
+             <a href="#" id="signup-btn2">
                  Sign Up
              </a>
          </h4>
         <h5>I agree to the <a href="#">Terms & Conditions</a> & <a href="#">Privacy Policy</a></h5>
     </div>
 </form>
+
+
+<script type="text/javascript">
+  $(function () {
+    // Log in button
+    $("#signup-btn2").modalForm({
+        formURL: "{% url 'account:signup' %}",
+        modalID: "#myModal",
+    });
+  });
+</script>
+
 
 <!--				<div class="st_form_pop_or_btn float_left">-->
 <!--					<h4>or</h4>-->
