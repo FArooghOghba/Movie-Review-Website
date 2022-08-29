@@ -20,6 +20,16 @@
         </div>
 
         <div class="st_profile_input float_left">
+            <label for="{{ form.email.id_for_label }}">Email</label>
+            {{ form.email }}
+            <div class="{% if form.email.errors %}invalid{% endif %}">
+                {% for error in form.email.errors %}
+                    <p class="help-block" style="color:red;">{{ error }}</p>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="st_profile_input float_left">
             <label for="{{ form.username.id_for_label }}">Username</label>
             {{ form.username }}
             <div class="{% if form.username.errors %}invalid{% endif %}">
