@@ -11,7 +11,7 @@ def logout_view(request):
     return redirect('/')
 
 
-class SignUpView(BSModalCreateView):
+class CustomSignUpView(BSModalCreateView):
     form_class = CustomUserCreationForm
     template_name = 'account/signup.html'
     success_message = 'account: Sign up succeeded. You can now Log in.'

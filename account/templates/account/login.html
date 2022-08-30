@@ -44,7 +44,7 @@
 
         <div class="st_form_pop_fp float_left">
             <h3>
-                <a href="#" data-toggle="modal" data-target="#myModa2" target="_blank">
+                <a href="#" id="reset-pass-btn">
                     Forgot Password?
                 </a>
             </h3>
@@ -74,6 +74,10 @@
     // Log in button
     $("#signup-btn2").modalForm({
         formURL: "{% url 'account:signup' %}",
+        modalID: "#myModal",
+    });
+    $("#reset-pass-btn").modalForm({
+        formURL: "{% url 'account:reset_password' %}",
         modalID: "#myModal",
     });
   });

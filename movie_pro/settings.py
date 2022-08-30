@@ -181,7 +181,7 @@ STAR_RATINGS_STAR_HEIGHT = 20
 
 # Site id
 
-SITE_ID = 2
+SITE_ID = 3
 
 
 # Ckeditor Configs
@@ -264,3 +264,13 @@ CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.math_challenge'
 MULTI_CAPTCHA_ADMIN = {
     'engine': 'simple-captcha',
 }
+
+
+# SMTP Configuration
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = os.environ.get('EMAIL_HOST')
+EMAIL_PORT = os.environ.get('EMAIL_PORT')
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS')
