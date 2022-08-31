@@ -73,7 +73,7 @@
 					<div class="st_slider_rating_btn prs_animate_btn1">
 						<ul>
 							<li data-animation="animated fadeInUp">
-								<a href="#" class="button button--tamaya prs_upcom_main_btn" data-text="latest news"><span>latest news</span></a>
+								<a href="{% url 'blog:list' %}" class="button button--tamaya prs_upcom_main_btn" data-text="latest news"><span>latest news</span></a>
 							</li>
 						</ul>
 					</div>
@@ -102,27 +102,24 @@
 											</div>
 										</div>
 									</div>
+
+									{% for blog_post in posts %}
 									<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
 										<div class="st_md_ts_main_sec float_left">
-											<img src="{% static 'images/content/md1.png' %}" alt="img">
-											<p><a href="#">Aquaman: Film Review - Makes A Refreshing Spl...</a>
-											</p>	<span>14 December</span>
+											<img src="{{ blog_post.image.url }}" alt="img" style="height:150px;">
+											<p>
+												<a href="{% url 'blog:single' post_slug=blog_post.slug %}">{{ blog_post.title|truncatewords:8 }}</a>
+											</p>
+											<span>{{ blog_post.published_date|date:'d F Y'}}</span>
 										</div>
 									</div>
-									<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
-										<div class="st_md_ts_main_sec float_left">
-											<img src="{% static 'images/content/md2.png' %}" alt="img">
-											<p><a href="#">Here's Proof That the Hype Is Real for James ...</a>
-											</p>	<span>25 December</span>
+									{% empty %}
+										<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+											<div class="st_md_ts_main_sec float_left">
+												<p>There is no story yet.</p>
+											</div>
 										</div>
-									</div>
-									<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
-										<div class="st_md_ts_main_sec float_left">
-											<img src="{% static 'images/content/md3.png' %}" alt="img">
-											<p><a href="#">The Epic Cast of Aquaman Will Definitely Make...</a>
-											</p>	<span>28 December</span>
-										</div>
-									</div>
+									{% endfor%}
 								</div>
 							</div>
 							<div class="col-md-12">

@@ -3,6 +3,7 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Q
 
 from movie.models import Movie
+from blog.models import Post
 
 
 # Create your views here.
@@ -34,8 +35,15 @@ def movie_list_view(request):
 
 def movie_single_view(request, movie_slug):
     movie = Movie.objects.get(slug=movie_slug)
+    posts = Post.objects.filter(
+        Q(title__icontains=movie.title) |
+        Q(content__icontains=movie.title)
+    )
 
-    context = {'movie': movie}
+    context = {
+        'movie': movie,
+        'posts': posts
+    }
     return render(request, template_name='movie/movie_single.html', context=context)
 
 
