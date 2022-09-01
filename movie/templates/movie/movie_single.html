@@ -229,11 +229,11 @@
 				<div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
 					<div class="st_ind_sidebar_right_wrapper float_left">
 						<div class="row">
-							<div class="col-md-12">
-								<div class="st_ind_sidebar_md_textbox float_left">
-									<p>Highest grossing movie in Mumbai in last 24 hours</p>	<a href="#">Know Box Office Report</a>
-								</div>
-							</div>
+<!--							<div class="col-md-12">-->
+<!--								<div class="st_ind_sidebar_md_textbox float_left">-->
+<!--									<p>Highest grossing movie in Mumbai in last 24 hours</p>	<a href="#">Know Box Office Report</a>-->
+<!--								</div>-->
+<!--							</div>-->
 <!--							<div class="col-md-12">-->
 <!--								<div class="st_ind_sidebar_md_textbox_btn float_left">-->
 <!--									<ul>-->
@@ -245,7 +245,7 @@
 							<div class="col-md-12">
 								<div class="st_ind_sidebar_advertiz st_ind_sidebar_advertiz_md float_left">
 									<a href="#">
-										<img src="{% static 'images/index_III/add.png' %}" alt="img">
+										<img src="{{ movie.poster.url }}" alt="img">
 									</a>
 								</div>
 							</div>
