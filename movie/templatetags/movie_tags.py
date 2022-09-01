@@ -16,9 +16,15 @@ def get_genres_count():
 
     all_movie_count = Movie.objects.count()
 
+    today = timezone.now()
+    upcoming_movie = Movie.objects \
+        .filter(release_date__gte=today) \
+        .order_by('release_date').first()
+
     return {
         'all_movie_count': all_movie_count,
-        'movies_genres_count': movies_genres_count
+        'movies_genres_count': movies_genres_count,
+        'upcoming_movie': upcoming_movie
     }
 
 

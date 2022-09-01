@@ -22,14 +22,33 @@
 
             </ul>
         </div>
+
         <div class="prs_mcc_event_title_wrapper">
             <h2>Top Events</h2>
-            <img src="{% static 'images/content/movie_category/event_img.jpg' %}" alt="event_img">
-            <h3><a href="#">Music Event in india</a></h3>
-            <p>Pune <span><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i
-                    class="fa fa-star-o"></i><i class="fa fa-star-o"></i></span>
+            <img src="{{ upcoming_movie.poster.url }}" alt="event_img">
+            <h3>
+                <a href="{% url 'movie:single' movie_slug=upcoming_movie.slug %}">
+                    {{ upcoming_movie.title }}
+                </a>
+            </h3>
+            <p>
+                {% for genre in upcoming_movie.genre.all %}
+                    {% if forloop.counter == 3 %}
+                        {{ genre.title|truncatechars:4 }}
+                    {% elif not forloop.last %}
+                        {{ genre.title|title }},
+                    {% else %}
+                        {{ genre.title|title }}
+                    {% endif %}
+                {% endfor %}
+                <span>
+                    <i class="fa fa-star"></i>
+                </span>
             </p>
-            <h4>June 07 <span>08:00-12:00 pm</span></h4>
+            <h4>
+                {{ upcoming_movie.release_date|date:'M d'}}
+                <span>08:00-12:00 pm</span>
+            </h4>
         </div>
     </div>
 </div>
