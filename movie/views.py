@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Q
+from django.utils import timezone
+
+from datetime import timedelta
 
 from movie.models import Movie
 from blog.models import Post
@@ -8,17 +11,23 @@ from blog.models import Post
 
 # Create your views here.
 
-def movie_list_view(request):
-    genre = request.GET.get('genre')
+def movie_list_view(request, **kwargs):
+    today = timezone.now()
+    last_tree_month = today - timedelta(days=90)
+    movies = Movie.objects \
+        .prefetch_related('genre', 'rating') \
+        .order_by('-rating__average')
 
-    if genre is not None:
-        movies = Movie.objects \
-            .prefetch_related('genre', 'rating') \
-            .filter(genre__title=genre)
-    else:
-        movies = Movie.objects \
-            .prefetch_related('genre', 'rating') \
-            .order_by('-rating__average')
+    if kwargs.get('genre_slug') is not None:
+        movies = movies.filter(genre__slug=kwargs['genre_slug'])
+    elif kwargs.get('topic_name') is not None:
+        if kwargs.get('topic_name') == 'fan_favorite':
+            movies = movies.filter(rating__average__gte=7.0) \
+                .order_by('-rating__average')
+        elif kwargs.get('topic_name') == 'upcoming':
+            movies = movies.filter(release_date__gt=today)
+        elif kwargs.get('topic_name') == 'released':
+            movies = movies.filter(release_date__range=(last_tree_month, today))
 
     paginator = Paginator(movies, 6)
     page_number = request.GET.get('page')

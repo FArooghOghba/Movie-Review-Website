@@ -37,12 +37,35 @@
                             </li>
                             <li class="parent">
                                 <a href="{% url 'movie:list' %}">movie</a>
-<!--                                <ul class="lg-submenu">-->
-<!--                                    <li><i class="fa fa-film"></i><a href="index.html">All Movies</a></li>-->
-<!--                                    <li><i class="fa fa-film"></i><a href="index2.html">Fan Favorite movies</a></li>-->
-<!--                                    <li><i class="fa fa-film"></i><a href="index3.html">Upcoming Movies</a></li>-->
-<!--                                    <li><i class="fa fa-film"></i><a href="index4.html">In Theater Movies</a></li>-->
-<!--                                </ul>-->
+                                <ul class="lg-submenu">
+                                    <li>
+                                        <a href="{% url 'movie:list' %}">
+                                            <i class="fa fa-film"></i>
+                                            &nbsp;&nbsp;&nbsp;All Movies
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="{% url 'movie:topic' topic_name='fan_favorite' %}">
+                                            <i class="fa fa-film"></i>
+                                            &nbsp;&nbsp;&nbsp;Fan Favorite movies
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="{% url 'movie:topic' topic_name='upcoming' %}">
+                                            <i class="fa fa-film"></i>
+                                            &nbsp;&nbsp;&nbsp;Upcoming Movies
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="{% url 'movie:topic' topic_name='released' %}">
+                                            <i class="fa fa-film"></i>
+                                            &nbsp;&nbsp;&nbsp;In Theater Movies
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
 
                             <li class="parent">

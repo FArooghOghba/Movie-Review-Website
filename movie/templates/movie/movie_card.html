@@ -56,7 +56,7 @@
 
                 <li>
                     <!-- Button trigger modal -->
-                    <a role="button" data-toggle="modal" data-target="#staticBackdrop{{ movie.id }}">
+                    <a role="button" data-toggle="modal" data-target="#staticBackdrop{{ type }}{{ movie.id }}">
                         <i class="fa fa-star-o"></i>
                     </a>
                 </li>
@@ -67,11 +67,11 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="staticBackdrop{{ movie.id }}" role="dialog">
+<div class="modal fade" id="staticBackdrop{{ type }}{{ movie.id }}" role="dialog">
     <div class="modal-dialog modal-dialog-centered">
        <div class="modal-content">
            <div class="modal-header">
-              <h4 class="modal-title" id="staticBackdropLabel{{ movie.id }}">{{ movie.title }}</h4>
+              <h4 class="modal-title" id="staticBackdropLabel{{ type }}{{ movie.id }}">{{ movie.title }}</h4>
            </div>
            <div class="modal-body">
                {% if movie.release_date|upcoming %}
@@ -81,7 +81,7 @@
                 {% endif %}
            </div>
            <div class="modal-footer">
-             <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
            </div>
        </div>
     </div>

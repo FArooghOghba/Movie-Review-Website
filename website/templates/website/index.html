@@ -121,7 +121,7 @@
 									<div class="row">
 										{% for movie in upcoming|slice:":4" %}
 											<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 prs_upcom_slide_first">
-												{% include 'movie/movie_card.html' with movie=movie %}
+												{% include 'movie/movie_card.html' with movie=movie type='upcoming' %}
 											</div>
 										{% endfor %}
 									</div>
@@ -130,7 +130,7 @@
 									<div class="row">
 										{% for movie in upcoming|slice:"4:8" %}
 											<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 prs_upcom_slide_first">
-												{% include 'movie/movie_card.html' with movie=movie %}
+												{% include 'movie/movie_card.html' with movie=movie type='upcoming' %}
 											</div>
 										{% endfor %}
 									</div>
@@ -156,7 +156,7 @@
 									<div class="row">
 										{% for movie in released|slice:":4" %}
 											<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 prs_upcom_slide_first">
-												{% include 'movie/movie_card.html' with movie=movie %}
+												{% include 'movie/movie_card.html' with movie=movie type='released' %}
 											</div>
 										{% endfor %}
 									</div>
@@ -165,7 +165,7 @@
 									<div class="row">
 										{% for movie in released|slice:"4:8" %}
 											<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 prs_upcom_slide_first">
-												{% include 'movie/movie_card.html' with movie=movie %}
+												{% include 'movie/movie_card.html' with movie=movie type='released' %}
 											</div>
 										{% endfor %}
 									</div>
@@ -190,7 +190,7 @@
 									<div class="row">
 										{% for movie in best_in_library|slice:":4" %}
 											<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 prs_upcom_slide_first">
-												{% include 'movie/movie_card.html' with movie=movie %}
+												{% include 'movie/movie_card.html' with movie=movie type='best_in_library' %}
 											</div>
 										{% endfor %}
 									</div>
@@ -199,7 +199,7 @@
 									<div class="row">
 										{% for movie in best_in_library|slice:"4:8" %}
 											<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 prs_upcom_slide_first">
-												{% include 'movie/movie_card.html' with movie=movie %}
+												{% include 'movie/movie_card.html' with movie=movie type='best_in_library' %}
 											</div>
 										{% endfor %}
 									</div>

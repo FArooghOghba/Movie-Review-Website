@@ -14,7 +14,7 @@
                 {% for genre in movies_genres_count %}
                     <li>
                         <i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;
-                        <a href="{% url 'movie:list' %}?genre={{ genre.slug }}">
+                        <a href="{% url 'movie:genre' genre_slug=genre.slug %}">
                             {{ genre.title|title }} <span>{{ genre.movie_count }}</span>
                         </a>
                     </li>
