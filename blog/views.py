@@ -20,8 +20,9 @@ def blog_list_view(request, **kwargs):
     if kwargs.get('cat_slug') is not None:
         all_post = all_post.filter(categories__slug=kwargs['cat_slug'])
 
+    page_number = request.GET.get('page', 1)
     paginator = Paginator(all_post, 3)
-    page_number = request.GET.get('page')
+
     try:
         all_post_pages = paginator.get_page(page_number)
     except PageNotAnInteger:
@@ -29,7 +30,16 @@ def blog_list_view(request, **kwargs):
     except EmptyPage:
         all_post_pages = paginator.get_page(paginator.num_pages)
 
-    context = {'all_pages': all_post_pages}
+    page_range = paginator.get_elided_page_range(
+        number=page_number,
+        on_ends=1,
+        on_each_side=1
+    )
+
+    context = {
+        'all_pages': all_post_pages,
+        'page_range': page_range
+    }
     return render(request, template_name='blog/blog_list.html', context=context)
 
 
@@ -104,8 +114,9 @@ def blog_search_view(request):
                 Q(tag__name__icontains=search)
             ).distinct()
 
+            page_number = request.GET.get('page', 1)
             paginator = Paginator(posts, 3)
-            page_number = request.GET.get('page')
+
             try:
                 all_post_pages = paginator.get_page(page_number)
             except PageNotAnInteger:
@@ -113,7 +124,16 @@ def blog_search_view(request):
             except EmptyPage:
                 all_post_pages = paginator.get_page(paginator.num_pages)
 
-            context = {'all_pages': all_post_pages}
+            page_range = paginator.get_elided_page_range(
+                number=page_number,
+                on_ends=1,
+                on_each_side=1
+            )
+
+            context = {
+                'all_pages': all_post_pages,
+                'page_range': page_range
+            }
             return render(request, template_name='blog/blog_list.html', context=context)
 
     return redirect('blog:list')

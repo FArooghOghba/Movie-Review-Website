@@ -7,7 +7,7 @@
             </li>
         {% endif %}
 
-        {% for page_num in all_pages.paginator.page_range %}
+        {% for page_num in page_range %}
             {% if all_pages.number == page_num %}
                 <li>
                     <a style="border-color:black; background-color:black; color:white;" href="?page={{ page_num }}">
@@ -15,9 +15,17 @@
                     </a>
                 </li>
             {% else %}
-                <li>
-                    <a href="?page={{ page_num }}">{{ page_num }}</a>
-                </li>
+                {% if page_num == all_pages.paginator.ELLIPSIS %}
+                    <li>
+                        <a href="#">
+                            {{ page_num }}
+                        </a>
+                    </li>
+                {% else %}
+                    <li>
+                        <a href="?page={{ page_num }}">{{ page_num }}</a>
+                    </li>
+                {% endif %}
             {% endif %}
         {% endfor %}
 

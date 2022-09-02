@@ -29,8 +29,9 @@ def movie_list_view(request, **kwargs):
         elif kwargs.get('topic_name') == 'released':
             movies = movies.filter(release_date__range=(last_tree_month, today))
 
-    paginator = Paginator(movies, 6)
-    page_number = request.GET.get('page')
+    paginator = Paginator(movies, per_page=6)
+    page_number = request.GET.get('page', 1)
+
     try:
         all_movie_pages = paginator.get_page(page_number)
     except PageNotAnInteger:
@@ -38,7 +39,16 @@ def movie_list_view(request, **kwargs):
     except EmptyPage:
         all_movie_pages = paginator.get_page(paginator.num_pages)
 
-    context = {'all_pages': all_movie_pages}
+    page_range = paginator.get_elided_page_range(
+        number=page_number,
+        on_ends=1,
+        on_each_side=1
+    )
+
+    context = {
+        'all_pages': all_movie_pages,
+        'page_range': page_range
+    }
     return render(request, template_name='movie/movie_list.html', context=context)
 
 
