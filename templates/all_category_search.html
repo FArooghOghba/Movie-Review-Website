@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% block title %}About Us{% endblock %}
 {% load static %}
+{% load movie_tags %}
+
 
 {% block content %}
 
@@ -20,7 +22,11 @@
                                         <div class="prs_mcc_list_movie_img_cont_wrapper">
 
                                             <div class="prs_mcc_list_left_cont_wrapper">
-                                                <h2>{{ search.title|truncatewords:5 }}</h2>
+                                                <h2>
+                                                    <a href="{% url 'movie:single' movie_slug=search.slug %}">
+                                                        {{ search.title|truncatewords:5 }}
+                                                    </a>
+                                                </h2>
 
                                                 <p>
                                                     {% for genre in search.genre.all %}
@@ -32,7 +38,13 @@
                                                     {% endfor %}
                                                 </p>
 
-                                                <h4>Movie Director - Jhon Doe</h4>
+                                                <h4>
+                                                    Movie Director -
+                                                    {% for director in search|director %}
+                                                        {{ director }}
+                                                        {% if not forloop.last %},{% endif %}
+                                                    {% endfor %}
+                                                </h4>
                                             </div>
 
                                             <div class="prs_mcc_list_right_cont_wrapper">

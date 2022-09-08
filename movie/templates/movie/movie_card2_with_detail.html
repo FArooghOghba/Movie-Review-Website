@@ -10,19 +10,29 @@
     <div class="prs_mcc_list_movie_img_cont_wrapper">
 
         <div class="prs_mcc_list_left_cont_wrapper">
-            <h2>{{ movie.title|truncatewords:5 }}</h2>
+            <h2>
+                <a href="{% url 'movie:single' movie_slug=movie.slug %}">
+                    {{ movie.title|truncatewords:5 }}
+                </a>
+            </h2>
 
             <p>
                 {% for genre in movie.genre.all %}
-                {{ genre.title|title }} {% if not forloop.last %},{% endif %}
+                    {{ genre.title|title }} {% if not forloop.last %},{% endif %}
                 {% endfor %}
                 &nbsp;&nbsp;
                 {% for rate in movie.rating.all %}
-                {{ rate.average|floatformat:"1" }} <i class="fa fa-star"></i>
+                    {{ rate.average|floatformat:"1" }} <i class="fa fa-star"></i>
                 {% endfor %}
             </p>
 
-            <h4>Movie Director - Jhon Doe</h4>
+            <h4>
+                Movie Director -
+                {% for director in movie|director %}
+                    {{ director }}
+                    {% if not forloop.last %},{% endif %}
+                {% endfor %}
+            </h4>
         </div>
 
         <div class="prs_mcc_list_right_cont_wrapper">

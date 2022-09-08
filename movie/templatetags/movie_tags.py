@@ -4,7 +4,7 @@ from django import template
 from django.db.models import Count
 from django.utils import timezone
 
-from movie.models import Genre, Movie
+from movie.models import Genre, Movie, CastCrew
 
 register = template.Library()
 
@@ -66,3 +66,15 @@ def upcoming(date):
     today = timezone.now().date()
     if date > today:
         return True
+
+
+@register.filter
+def director(movie):
+    movie_director = CastCrew.objects \
+        .filter(cast_crew=movie,
+                crew=True,
+                role__role_name='Director',
+                )
+
+    print(movie_director)
+    return movie_director
