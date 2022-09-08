@@ -5,7 +5,7 @@ from django.utils import timezone
 
 from datetime import timedelta
 
-from movie.models import Movie
+from movie.models import Movie, Role
 from blog.models import Post
 
 
@@ -53,7 +53,25 @@ def movie_list_view(request, **kwargs):
 
 
 def movie_single_view(request, movie_slug):
-    movie = Movie.objects.get(slug=movie_slug)
+    movie = Movie.objects \
+        .get(slug=movie_slug)
+
+    casts = Role.objects \
+        .select_related('cast_crew') \
+        .filter(
+            movie=movie,
+            cast_crew__cast=True,
+        ) \
+        .exclude(role_name__in=('Producer', 'Writer', 'Director', 'Music'))
+
+    crews = Role.objects \
+        .select_related('cast_crew') \
+        .filter(
+            movie=movie,
+            cast_crew__crew=True,
+            role_name__in=('Producer', 'Writer', 'Director', 'Music')
+        )
+
     posts = Post.objects.filter(
         Q(title__icontains=movie.title) |
         Q(content__icontains=movie.title)
@@ -61,6 +79,8 @@ def movie_single_view(request, movie_slug):
 
     context = {
         'movie': movie,
+        'casts': casts,
+        'crews': crews,
         'posts': posts
     }
     return render(request, template_name='movie/movie_single.html', context=context)

@@ -145,38 +145,16 @@
 												<div class="st_md_summ_client_slider float_left">
 													<p>CAST</p>
 													<div class="owl-carousel owl-theme">
-														<div class="item">
-															<div class="st_summ_slider_cont float_left">
-																<img src="{% static 'images/content/c1.jpg' %}" alt="img">
-																<h4><a href="#">Jason Momoa</a></h4>
-																<h5>Actor</h5>
-																<h6>As Arthur</h6>
+														{% for cast in casts %}
+															<div class="item">
+																<div class="st_summ_slider_cont float_left">
+																	<img src="{{ cast.cast_crew.image.url }}" alt="img">
+																	<h4><a href="#">{{ cast.cast_crew.name }}</a></h4>
+																	<h5>{{ cast.cast_crew.career }}</h5>
+																	<h6>As {{ cast.role_name }}</h6>
+																</div>
 															</div>
-														</div>
-														<div class="item">
-															<div class="st_summ_slider_cont float_left">
-																<img src="{% static 'images/content/c2.jpg' %}" alt="img">
-																<h4><a href="#">Nicole Kidman</a></h4>
-																<h5>Actor</h5>
-																<h6>As Arthur</h6>
-															</div>
-														</div>
-														<div class="item">
-															<div class="st_summ_slider_cont float_left">
-																<img src="{% static 'images/content/c3.jpg' %}" alt="img">
-																<h4><a href="#">Willem Dafoe</a></h4>
-																<h5>Actor</h5>
-																<h6>As Arthur</h6>
-															</div>
-														</div>
-														<div class="item">
-															<div class="st_summ_slider_cont float_left">
-																<img src="{% static 'images/content/c4.jpg' %}" alt="img">
-																<h4><a href="#">Amber Heard</a></h4>
-																<h5>Actor</h5>
-																<h6>As Arthur</h6>
-															</div>
-														</div>
+														{% endfor %}
 													</div>
 												</div>
 											</div>
@@ -184,38 +162,15 @@
 												<div class="st_md_summ_client_slider float_left">
 													<p>Crew</p>
 													<div class="owl-carousel owl-theme">
-														<div class="item">
-															<div class="st_summ_slider_cont float_left">
-																<img src="{% static 'images/content/c5.jpg' %}" alt="img">
-																<h4><a href="#">James Wan.</a></h4>
-																<h5>Actor</h5>
-																<h6>As Arthur</h6>
+														{% for crew in crews %}
+															<div class="item">
+																<div class="st_summ_slider_cont float_left">
+																	<img src="{{ crew.cast_crew.image.url }}" alt="img">
+																	<h4><a href="#">{{ crew.cast_crew.name }}</a></h4>
+																	<h6>{{ crew.role_name }}</h6>
+																</div>
 															</div>
-														</div>
-														<div class="item">
-															<div class="st_summ_slider_cont float_left">
-																<img src="{% static 'images/content/c6.jpg' %}" alt="img">
-																<h4><a href="#">Peter Safran</a></h4>
-																<h5>Actor</h5>
-																<h6>As Arthur</h6>
-															</div>
-														</div>
-														<div class="item">
-															<div class="st_summ_slider_cont float_left">
-																<img src="{% static 'images/content/c7.jpg' %}" alt="img">
-																<h4><a href="#">Rob Cowan</a></h4>
-																<h5>Actor</h5>
-																<h6>As Arthur</h6>
-															</div>
-														</div>
-														<div class="item">
-															<div class="st_summ_slider_cont float_left">
-																<img src="{% static 'images/content/c8.jpg' %}" alt="img">
-																<h4><a href="#">Geoff Johns</a></h4>
-																<h5>Actor</h5>
-																<h6>As Arthur</h6>
-															</div>
-														</div>
+														{% endfor %}
 													</div>
 												</div>
 											</div>
