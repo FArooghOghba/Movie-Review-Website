@@ -76,5 +76,4 @@ def director(movie):
                 role__role_name='Director',
                 )
 
-    print(movie_director)
     return movie_director
