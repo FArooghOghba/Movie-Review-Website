@@ -103,19 +103,46 @@
 					<div class="prs_footer_cont1_wrapper prs_footer_cont1_wrapper_2">
 						<h2>MOVIES by presenter</h2>
 						<ul>
-							<li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">Action movie</a>
+							<li>
+								<i class="fa fa-circle"></i> &nbsp;&nbsp;
+								<a href="{% url 'movie:genre' genre_slug='action' %}">
+									Action movie
+								</a>
 							</li>
-							<li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">Romantic movie</a>
+							<li>
+								<i class="fa fa-circle"></i> &nbsp;&nbsp;
+								<a href="{% url 'movie:genre' genre_slug='romance' %}">
+									Romantic movie
+								</a>
 							</li>
-							<li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">Adult movie</a>
+							<li>
+								<i class="fa fa-circle"></i> &nbsp;&nbsp;
+								<a href="{% url 'movie:genre' genre_slug='sci-fi' %}">
+									Sci-Fi movie
+								</a>
 							</li>
-							<li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">Comedy movie</a>
+							<li>
+								<i class="fa fa-circle"></i> &nbsp;&nbsp;
+								<a href="{% url 'movie:genre' genre_slug='comedy' %}">
+									Comedy movie
+								</a>
 							</li>
-							<li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">Drama movie</a>
+							<li>
+								<i class="fa fa-circle"></i> &nbsp;&nbsp;
+								<a href="{% url 'movie:genre' genre_slug='drama' %}">
+									Drama movie
+								</a>
 							</li>
-							<li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">Musical movie</a>
+							<li><i class="fa fa-circle"></i> &nbsp;&nbsp;
+								<a href="{% url 'movie:genre' genre_slug='musical' %}">
+									Musical movie
+								</a>
 							</li>
-							<li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">Classical movie</a>
+							<li>
+								<i class="fa fa-circle"></i> &nbsp;&nbsp;
+								<a href="{% url 'movie:genre' genre_slug='horror' %}">
+									Horror movie
+								</a>
 							</li>
 						</ul>
 					</div>
@@ -176,13 +203,20 @@
 				<div class="col-lg-6 col-md-6 col-sm-4 col-xs-12">
 					<div class="prs_footer_social_wrapper">
 						<ul>
-							<li><a href="#"><i class="fa fa-facebook"></i></a>
+							<li>
+								<a href="https://github.com/FArooghOghba">
+									<i class="fa fa-github"></i>
+								</a>
 							</li>
-							<li><a href="#"><i class="fa fa-twitter"></i></a>
+							<li>
+								<a href="https://twitter.com/FArough_Oghba">
+									<i class="fa fa-twitter"></i>
+								</a>
 							</li>
-							<li><a href="#"><i class="fa fa-linkedin"></i></a>
-							</li>
-							<li><a href="#"><i class="fa fa-youtube-play"></i></a>
+							<li>
+								<a href="https://www.linkedin.com/in/farough-oghba/">
+									<i class="fa fa-linkedin"></i>
+								</a>
 							</li>
 						</ul>
 					</div>
