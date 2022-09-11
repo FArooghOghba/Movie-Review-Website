@@ -56,7 +56,7 @@ SITE_ID = 3
 
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['movie-pro.ir', 'www.movie-pro.ir']
 
 
 # Static files (CSS, JavaScript, Images)
