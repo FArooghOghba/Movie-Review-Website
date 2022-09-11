@@ -57,6 +57,15 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+# Django Debug Toolbar Configuration
+
+INTERNAL_IPS = [
+    # ...
+    "127.0.0.1",
+    # ...
+]
+
+
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
