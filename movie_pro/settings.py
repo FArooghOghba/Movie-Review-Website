@@ -26,53 +26,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('SECRET_KEY')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
-
-
-# Application definition
-
-INSTALLED_APPS = [
-    'multi_captcha_admin',
-
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-
-    'django.contrib.sites',
-    'django.contrib.sitemaps',
-
-    'bootstrap_modal_forms',
-    'widget_tweaks',
-    'debug_toolbar',
-    'star_ratings',
-    'taggit',
-    'robots',
-    'ckeditor',
-    'captcha',
-
-    'website.apps.WebsiteConfig',
-    'movie.apps.MovieConfig',
-    'blog.apps.BlogConfig',
-    'account.apps.AccountConfig'
-]
-
-MIDDLEWARE = [
-    "debug_toolbar.middleware.DebugToolbarMiddleware",
-
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-]
 
 ROOT_URLCONF = 'movie_pro.urls'
 
@@ -93,20 +46,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'movie_pro.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('NAME'),
-        'HOST': os.getenv('HOST'),
-        'USER': os.getenv('USER'),
-        'PASSWORD': os.getenv('PASSWORD'),
-    }
-}
 
 
 # Password validation
@@ -177,11 +116,6 @@ INTERNAL_IPS = [
 STAR_RATINGS_RERATE_SAME_DELETE = True
 STAR_RATINGS_RANGE = 10
 STAR_RATINGS_STAR_HEIGHT = 20
-
-
-# Site id
-
-SITE_ID = 3
 
 
 # Ckeditor Configs
