@@ -62,16 +62,11 @@ ALLOWED_HOSTS = []
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'
 STATIC_ROOT = '/home/moviepro/public_html/static'
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-]
 
 
 # Media Files
 
-MEDIA_URL = '/media/'  # MEDIA_URL is the URL that will serve the media files.
 MEDIA_ROOT = '/home/moviepro/public_html/media'
 # MEDIA_ROOT is the path to the root directory where the files are getting stored.
 
