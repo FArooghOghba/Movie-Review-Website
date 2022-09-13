@@ -49,7 +49,7 @@ MIDDLEWARE = [
 
 # Site id
 
-SITE_ID = 3
+SITE_ID = 4
 
 
 # SECURITY WARNING: don't run with debug turned on in production!

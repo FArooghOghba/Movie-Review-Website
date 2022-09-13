@@ -76,11 +76,6 @@ INTERNAL_IPS = [
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 
-# Media Files
-
-MEDIA_ROOT = BASE_DIR / 'media'  # MEDIA_ROOT is the path to the root directory where the files are getting stored.
-
-
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 

@@ -93,6 +93,7 @@ STATICFILES_DIRS = [
 # Media Files
 
 MEDIA_URL = '/media/'  # MEDIA_URL is the URL that will serve the media files.
+MEDIA_ROOT = BASE_DIR / 'media'  # MEDIA_ROOT is the path to the root directory where the files are getting stored.
 
 
 # Default primary key field type
