@@ -77,10 +77,10 @@ MEDIA_ROOT = '/home/moviepro/public_html/media'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('NAME'),
-        'HOST': os.getenv('HOST'),
-        'USER': os.getenv('USER'),
-        'PASSWORD': os.getenv('PASSWORD'),
-        'PORT': os.getenv('PORT')
+        'NAME': 'moviepro_movie_pro',
+        'HOST': 'localhost',
+        'USER': 'moviepro_admin',
+        'PASSWORD': 'Rj$$-;+qtB!]',
+        'PORT': '3306'
     }
 }
