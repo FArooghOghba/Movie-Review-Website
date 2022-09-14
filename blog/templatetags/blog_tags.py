@@ -2,6 +2,10 @@ from django import template
 from django.db.models import Count
 from django.utils import timezone
 
+import hashlib
+from urllib.parse import urlencode
+from django.utils.safestring import mark_safe
+
 from blog.models import *
 
 register = template.Library()
@@ -40,3 +44,19 @@ def archives():
 
     return {'counted_month_posts': counted_month_posts}
 
+
+# return only the URL of the gravatar
+# TEMPLATE USE:  {{ email|gravatar_url:150 }}
+@register.filter
+def gravatar_url(email, size=40):
+    default = "identicon"
+    return f"https://www.gravatar.com/avatar/" \
+           f"{hashlib.md5(email.lower().encode('utf-8')).hexdigest()}?{urlencode({'d':default, 's': str(size)})}"
+
+
+# return an image tag with the gravatar
+# TEMPLATE USE:  {{ email|gravatar:150 }}
+@register.filter
+def gravatar(email, size=40):
+    url = gravatar_url(email, size)
+    return mark_safe(f'{url}{size}{size}')
