@@ -35,7 +35,8 @@ def archives():
         .filter(published_date__year=this_year) \
         .dates('published_date', 'month') \
         .annotate(count=Count('id')) \
-        .values('datefield', 'count')
+        .values('datefield', 'count') \
+        .order_by('-datefield')
 
     return {'counted_month_posts': counted_month_posts}
 

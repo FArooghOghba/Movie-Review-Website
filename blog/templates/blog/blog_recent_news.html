@@ -10,10 +10,10 @@
             <div class="hs_footer_ln_cont_wrapper_recent_news">
                 <h4>
                     <a href="{% url 'blog:single' post_slug=post.slug %}">
-                        {{ post.title|truncatewords:3 }}
+                        {{ post.title|truncatewords:2 }}
                     </a>
                 </h4>
-                <p>{{ post.published_date|date:'d F Y' }}</p>
+                <p>{{ post.published_date|date:'d M Y' }}</p>
             </div>
         </div>
     {% endfor %}
