@@ -18,16 +18,22 @@ def movie_list_view(request, **kwargs):
         .prefetch_related('genre', 'rating') \
         .order_by('-rating__average')
 
+    topic = 'top'
+
     if kwargs.get('genre_slug') is not None:
         movies = movies.filter(genre__slug=kwargs['genre_slug'])
+        topic = kwargs['genre_slug']
     elif kwargs.get('topic_name') is not None:
         if kwargs.get('topic_name') == 'fan_favorite':
             movies = movies.filter(rating__average__gte=7.0) \
                 .order_by('-rating__average')
+            topic = 'fan favorite'
         elif kwargs.get('topic_name') == 'upcoming':
             movies = movies.filter(release_date__gt=today)
+            topic = 'upcoming'
         elif kwargs.get('topic_name') == 'released':
             movies = movies.filter(release_date__range=(last_tree_month, today))
+            topic = 'released'
 
     paginator = Paginator(movies, per_page=6)
     page_number = request.GET.get('page', 1)
@@ -47,7 +53,8 @@ def movie_list_view(request, **kwargs):
 
     context = {
         'all_pages': all_movie_pages,
-        'page_range': page_range
+        'page_range': page_range,
+        'topic': topic
     }
     return render(request, template_name='movie/movie_list.html', context=context)
 
