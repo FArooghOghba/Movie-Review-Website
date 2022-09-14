@@ -62,7 +62,15 @@
 												</li>
 
 												<li>
-													<i class="fa fa-tags"></i> &nbsp;&nbsp;Presenter Movie
+													<i class="fa fa-newspaper-o"></i> &nbsp;&nbsp;
+													{% for cat in post.categories.all %}
+														<a href="{% url 'blog:category' cat_slug=cat.slug %}">
+															{{ cat }}
+														</a>
+														{% if not forloop.last %}
+															,
+														{% endif %}
+													{% endfor %}
 												</li>
 
 											</ul>
