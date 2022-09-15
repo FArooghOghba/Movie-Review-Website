@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.contrib import messages
 from django.db.models import Q
 from django.utils import timezone
 
@@ -53,11 +54,17 @@ def blog_single_view(request, post_slug):
 
     if request.method == 'POST':
         comment_form = CommentForm(data=request.POST)
-        if comment_form.is_valid():
+        if not request.user.is_authenticated:
+            messages.warning(request, 'You first must Log in.')
+
+        elif comment_form.is_valid():
             new_comment = comment_form.save()
+
+            messages.success(request, 'Your comment submitted Successfully.')
             return redirect(f'{post.get_absolute_url()}#{new_comment}')
         else:
             print(comment_form.errors.as_data())
+            messages.error(request, 'Something is wrong.')
             return redirect(post.get_absolute_url())
 
     context = {
@@ -72,16 +79,21 @@ def blog_reply_comment_view(request):
 
         post_url = request.POST.get('post_url')
 
-        if reply_comment_form.is_valid():
+        if not request.user.is_authenticated:
+            messages.warning(request, 'You first must Log in.')
+
+        elif reply_comment_form.is_valid():
             parent = request.POST.get('parent')
             new_reply_comment = reply_comment_form.save(commit=False)
 
             new_reply_comment.parent = Comment(id=parent)
             new_reply_comment.save()
 
+            messages.success(request, 'Your Reply sent Successfully.')
             return redirect(f'{post_url}#{new_reply_comment.id}')
         else:
             print(reply_comment_form.errors.as_data())
+            messages.error(request, 'Something is wrong.')
             return redirect(post_url)
 
     return redirect('/')

@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.utils import timezone
+from django.contrib import messages
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Q
 
@@ -42,8 +43,10 @@ def contact_view(request):
             contact_form.save()
 
             print(contact_form.errors.as_data())
+            messages.success(request, 'Your request sent Successfully.')
         else:
             print(contact_form.errors.as_data())
+            messages.error(request, 'Something is wrong.')
 
     contact_form = ContactForm()
     context = {'contact_form': contact_form}
@@ -106,7 +109,9 @@ def newsletter_view(request):
         if newsletter_form.is_valid():
             newsletter_form.save()
             print(newsletter_form.errors.as_data())
+            messages.success(request, 'Your request sent Successfully.')
         else:
+            messages.error(request, 'Something is wrong.')
             print(newsletter_form.errors.as_data())
 
     return redirect(page_url)
