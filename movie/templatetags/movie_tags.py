@@ -65,7 +65,8 @@ def popularity_percentage(rating):
 def upcoming(date):
     today = timezone.now().date()
     if date > today:
-        return True
+        return 'ok'
+    return False
 
 
 @register.filter

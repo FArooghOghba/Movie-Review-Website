@@ -40,16 +40,17 @@
                     {% endif %}
                 {% endfor %}
             </p>
-            {% for rate in movie.rating.all %}
-                {% if movie.release_date|upcoming %}
-                    <h5>Not Released Yet</h5>
-                {% else %}
+            {% if movie.release_date|upcoming %}
+                <h4>Not Released <i class="fa fa-star"></i></h4>
+            {% else %}
+                {% for rate in movie.rating.all %}
                     <h4>
                         {{ rate.average|floatformat:"1" }}
                         <i class="fa fa-star"></i>
                     </h4>
-                {% endif %}
-            {% endfor %}
+                {% endfor %}
+            {% endif %}
+
         </div>
         <div class="prs_upcom_movie_content_box_inner_icon">
             <ul>

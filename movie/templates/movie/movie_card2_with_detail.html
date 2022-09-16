@@ -21,9 +21,14 @@
                     {{ genre.title|title }} {% if not forloop.last %},{% endif %}
                 {% endfor %}
                 &nbsp;&nbsp;
-                {% for rate in movie.rating.all %}
-                    {{ rate.average|floatformat:"1" }} <i class="fa fa-star"></i>
-                {% endfor %}
+                {% if movie.release_date|upcoming %}
+                    Not Released <i class="fa fa-star"></i>
+                {% else %}
+                    {% for rate in movie.rating.all %}
+                        {{ rate.average|floatformat:"1" }}
+                        <i class="fa fa-star"></i>
+                    {% endfor %}
+                {% endif %}
             </p>
 
             <h4>
@@ -57,7 +62,7 @@
                         {% endif %}
                    </div>
                    <div class="modal-footer">
-                     <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                       <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                    </div>
                </div>
             </div>
