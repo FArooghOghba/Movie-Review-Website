@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'robots',
     'ckeditor',
     'captcha',
+    'compressor',
 
     'website.apps.WebsiteConfig',
     'movie.apps.MovieConfig',
@@ -68,12 +69,6 @@ INTERNAL_IPS = [
     "127.0.0.1",
     # ...
 ]
-
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.1/howto/static-files/
-
-STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 
 # Database

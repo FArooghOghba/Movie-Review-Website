@@ -89,12 +89,27 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 
 # Media Files
 
 MEDIA_URL = '/media/'  # MEDIA_URL is the URL that will serve the media files.
 MEDIA_ROOT = BASE_DIR / 'media'  # MEDIA_ROOT is the path to the root directory where the files are getting stored.
 
+
+# Django Compressor
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    # other finders..
+    'compressor.finders.CompressorFinder',
+)
+
+COMPRESS_ENABLED = True
+# COMPRESS_ROOT = STATIC_ROOT  # django compressor
+COMPRESS_OFFLINE = True
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

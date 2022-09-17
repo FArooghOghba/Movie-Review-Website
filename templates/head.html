@@ -7,8 +7,11 @@
 
 <!--Template style -->
 {% load static %}
+{% load compress %}
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+{% compress css %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/animate.css' %}"/>
 <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}"/>
 <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.css' %}"/>
@@ -35,3 +38,4 @@
 <!-- favicon links -->
 <link rel="shortcut icon" type="image/png" href="{% static 'images/header/favicon.ico' %}"/>
 
+{% endcompress %}

@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'robots',
     'ckeditor',
     'captcha',
+    'compressor',
 
     'website.apps.WebsiteConfig',
     'movie.apps.MovieConfig',
@@ -57,18 +58,6 @@ SITE_ID = 4
 DEBUG = False
 
 ALLOWED_HOSTS = ['movie-pro.ir', 'www.movie-pro.ir']
-
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.1/howto/static-files/
-
-STATIC_ROOT = '/home/moviepro/public_html/static'
-
-
-# Media Files
-
-MEDIA_ROOT = '/home/moviepro/public_html/media'
-# MEDIA_ROOT is the path to the root directory where the files are getting stored.
 
 
 # Database

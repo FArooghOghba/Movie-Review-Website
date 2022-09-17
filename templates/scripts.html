@@ -1,5 +1,7 @@
 {% load static %}
+{% load compress %}
 
+{% compress js %}
 <!--main js file start-->
 <script src="{% static 'assets/js/jquery.js' %}"></script>
 
@@ -30,6 +32,8 @@
 <script src="{% static 'js/custom.js' %}"></script>
 
 <script src="{% static 'js/jquery.bootstrap.modal.forms.js' %}"></script>
+{% endcompress %}
+
 <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
 
 <script src="https://unpkg.com/htmx.org@1.6.0"></script>
