@@ -10,6 +10,7 @@
 {% load compress %}
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link  rel="stylesheet" type="text/css" href="{% static 'css/toastr.min.css' %}">
 
 {% compress css %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/animate.css' %}"/>
@@ -29,13 +30,13 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
 <link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}"/>
 
-<link href="{% static 'css/toastr.min.css' %}" rel="stylesheet">
 
 <!-- Django Rating Star -->
 
 <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
 
+{% endcompress %}
+
 <!-- favicon links -->
 <link rel="shortcut icon" type="image/png" href="{% static 'images/header/favicon.ico' %}"/>
 
-{% endcompress %}
