@@ -33,9 +33,14 @@
                                                         {{ genre.title|title }} {% if not forloop.last %},{% endif %}
                                                     {% endfor %}
                                                     &nbsp;&nbsp;
-                                                    {% for rate in search.rating.all %}
-                                                        {{ rate.average|floatformat:"1" }} <i class="fa fa-star"></i>
-                                                    {% endfor %}
+                                                    {% if search.release_date|upcoming %}
+                                                        Not Released <i class="fa fa-star"></i>
+                                                    {% else %}
+                                                        {% for rate in search.rating.all %}
+                                                            {{ rate.average|floatformat:"1" }}
+                                                            <i class="fa fa-star"></i>
+                                                        {% endfor %}
+                                                    {% endif %}
                                                 </p>
 
                                                 <h4>
@@ -76,32 +81,55 @@
                                                     <li>by {{ search.author|title }}</li>
                                                 </ul>
                                                 <h2>{{ search.title }}</h2>
-                                                <p>{{ search.content|truncatewords:50 }}</p>
+                                                <p>{{ search.content|safe|truncatewords:50 }}</p>
                                                 <h5><a href="{% url 'blog:single' post_slug=search.slug %}">Read More <i class="fa fa-long-arrow-right"></i></a></h5>
                                             </div>
                                         </div>
                                         <div class="hs_blog_box1_bottom_cont_main_wrapper">
                                             <div class="hs_blog_box1_bottom_cont_left">
                                                 <ul>
-                                                    <li><i class="fa fa-thumbs-up"></i> &nbsp;&nbsp;<a href="#">1244 Likes</a>
+
+                                                    <li>
+                                                        {% include 'blog/blog_like_post.html' with post=search %}
                                                     </li>
-                                                    <li><i class="fa fa-comments"></i> &nbsp;&nbsp;<a href="#">256 Comments</a>
+
+                                                    <li>
+                                                        <i class="fa fa-comments"></i> &nbsp;&nbsp;
+                                                        {{ search.total_comment }} Comment{{ search.total_comment|pluralize }}
                                                     </li>
-                                                    <li><i class="fa fa-tags"></i> &nbsp;&nbsp;<a href="#">Presenter Movie</a>
+
+                                                    <li>
+                                                        <i class="fa fa-newspaper-o"></i> &nbsp;&nbsp;
+                                                        {% for cat in search.categories.all %}
+                                                            <a href="{% url 'blog:category' cat_slug=cat.slug %}">
+                                                                {{ cat }}
+                                                            </a>
+                                                            {% if not forloop.last %}
+                                                                ,
+                                                            {% endif %}
+                                                        {% endfor %}
                                                     </li>
-                                                </ul>
+
+											    </ul>
                                             </div>
                                             <div class="hs_blog_box1_bottom_cont_right">
                                                 <ul>
-                                                    <li><a href="#"><i class="fa fa-facebook"></i></a>
+                                                    <li>
+                                                        <a href="https://github.com/FArooghOghba">
+                                                            <i class="fa fa-github"></i>
+                                                        </a>
                                                     </li>
-                                                    <li><a href="#"><i class="fa fa-youtube-play"></i></a>
+                                                    <li>
+                                                        <a href="https://www.linkedin.com/in/farough-oghba/">
+                                                            <i class="fa fa-linkedin"></i>
+                                                        </a>
                                                     </li>
-                                                    <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                                                    <li>
+                                                        <a href="https://twitter.com/FArough_Oghba">
+                                                            <i class="fa fa-twitter"></i>
+                                                        </a>
                                                     </li>
-                                                    <li><a href="#"><i class="fa fa-twitter"></i></a>
-                                                    </li>
-                                                </ul>
+											    </ul>
                                             </div>
                                         </div>
                                     </div>

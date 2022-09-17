@@ -45,6 +45,11 @@ def movie_list_view(request, **kwargs):
     except EmptyPage:
         all_movie_pages = paginator.get_page(paginator.num_pages)
 
+    if not isinstance(page_number, int):
+        page_number = 1
+    if page_number > paginator.num_pages:
+        page_number = paginator.num_pages
+
     page_range = paginator.get_elided_page_range(
         number=page_number,
         on_ends=1,
@@ -108,7 +113,21 @@ def movie_search_view(request):
             except EmptyPage:
                 all_movie_pages = paginator.get_page(paginator.num_pages)
 
-            context = {'all_pages': all_movie_pages}
+            if not isinstance(page_number, int):
+                page_number = 1
+            if page_number > paginator.num_pages:
+                page_number = paginator.num_pages
+
+            page_range = paginator.get_elided_page_range(
+                number=page_number,
+                on_ends=1,
+                on_each_side=1
+            )
+
+            context = {
+                'all_pages': all_movie_pages,
+                'page_range': page_range
+            }
             return render(request, template_name='movie/movie_list.html', context=context)
 
     return redirect('movie:list')

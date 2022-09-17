@@ -31,6 +31,11 @@ def blog_list_view(request, **kwargs):
     except EmptyPage:
         all_post_pages = paginator.get_page(paginator.num_pages)
 
+    if not isinstance(page_number, int):
+        page_number = 1
+    if page_number > paginator.num_pages:
+        page_number = paginator.num_pages
+
     page_range = paginator.get_elided_page_range(
         number=page_number,
         on_ends=1,
@@ -140,6 +145,11 @@ def blog_search_view(request):
                 all_post_pages = paginator.get_page(1)
             except EmptyPage:
                 all_post_pages = paginator.get_page(paginator.num_pages)
+
+            if not isinstance(page_number, int):
+                page_number = 1
+            if page_number > paginator.num_pages:
+                page_number = paginator.num_pages
 
             page_range = paginator.get_elided_page_range(
                 number=page_number,
